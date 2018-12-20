@@ -1,5 +1,4 @@
-﻿using Cal_ViewModel;
-using MahApps.Metro.Controls;
+﻿using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,31 +11,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CalculatorPro
+namespace CalculatorPro.TestDemo
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// Test.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class Test : MetroWindow
     {
-        public MainWindow()
+        public Test()
         {
             InitializeComponent();
-            this.DataContext = new CalViewModel();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.hisFlyout.Visibility = Visibility.Visible;
-            this.hisFlyout.Height = this.OutGrid.ActualHeight;
-            if (!this.hisFlyout.IsOpen)
-            {
-                this.hisFlyout.IsOpen = true;
+            
+                this.hisFlyout.Visibility = Visibility.Visible;
+                this.hisFlyout.Height = this.TestGrid.ActualHeight;
+                if (!this.hisFlyout.IsOpen)
+                {
+                    this.hisFlyout.IsOpen = true;
 
-            }            
+                }
+            
         }
     }
 }

@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace CalculatorPro.TestDemo
 {
     /// <summary>
-    /// TestWindow1.xaml 的交互逻辑
+    /// TestUser.xaml 的交互逻辑
     /// </summary>
-    public partial class TestWindow1 : Window
+    public partial class TestUser : UserControl
     {
-        public TestWindow1()
+        public TestUser()
         {
             InitializeComponent();
         }

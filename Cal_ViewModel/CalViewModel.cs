@@ -4,9 +4,16 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Microsoft.Web.Infrastructure;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace Cal_ViewModel
 {
@@ -31,7 +38,7 @@ namespace Cal_ViewModel
             string op = btn.Content.ToString();
             if (op == "=")
             {
-
+                
             }
             else if (op == "+")
             {
