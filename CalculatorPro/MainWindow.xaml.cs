@@ -1,4 +1,5 @@
 ﻿using Cal_ViewModel;
+using CalculatorPro.View;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -26,17 +27,6 @@ namespace CalculatorPro
         {
             InitializeComponent();
             this.DataContext = new CalViewModel();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.hisFlyout.Visibility = Visibility.Visible;
-            this.hisFlyout.Height = this.OutGrid.ActualHeight;
-            if (!this.hisFlyout.IsOpen)
-            {
-                this.hisFlyout.IsOpen = true;
-
-            }            
         }
     }
 }

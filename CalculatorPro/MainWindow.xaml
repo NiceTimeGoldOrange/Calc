@@ -22,20 +22,21 @@
         <Grid Grid.Row="0" Margin="0,0,-0.4,0.8">
             <Label VerticalAlignment="Center" Content="  计算器"/>
             <DockPanel LastChildFill="False" VerticalAlignment="Top">
-                <Button  DockPanel.Dock="Right" Style="{StaticResource btnClose}" FontSize="15">×
-                                  
-                </Button>
+                <Button  DockPanel.Dock="Right" Style="{StaticResource btnClose}" FontSize="15" >×</Button>
                 <Button  DockPanel.Dock="Right" Style="{StaticResource btnMinAndMax}" FontSize="13.5" FontWeight="ExtraLight">☐</Button>
                 <Button  DockPanel.Dock="Right" Style="{StaticResource btnMinAndMax}" FontSize="20" >-</Button>
             </DockPanel>
         </Grid>
         <DockPanel Grid.Row="1" Margin="0,0.2,-0.4,18" Grid.RowSpan="2">
-            <Button DockPanel.Dock="Left" Style="{StaticResource btnStandard}" >≡</Button>
+            <Button DockPanel.Dock="Left" Style="{StaticResource btnNav}" >≡</Button>
             <Label  DockPanel.Dock="Left" Margin="0,0,0,-0.2" Width="240" Style="{StaticResource lblText}">标准</Label>
-            <Button DockPanel.Dock="Right" Style="{StaticResource btnStandard}" Click="Button_Click">◷</Button>
+            <Button DockPanel.Dock="Right" Style="{StaticResource btnHis}" >◷</Button>
         </DockPanel>
+        <Border Grid.Row="2">
+            <TextBox Style="{StaticResource txtSmallBox}" Text="{Binding DisPlayText}"></TextBox>
+        </Border>
         <Border Grid.Row="3" Margin="0,0,-0.4,0.2">
-            <TextBox IsReadOnly="True" Background="#e6e6e6" BorderThickness="0"></TextBox>
+            <TextBox  Style="{StaticResource txtBigBox}" Text="{Binding DisPlayBigText}"></TextBox>
         </Border>
         <Grid Grid.Row="3" Margin="0,71,-0.4,0.2" Grid.RowSpan="2" x:Name="GridMem" >
             <UniformGrid Rows="1" >
@@ -56,21 +57,21 @@
                 <Button Style="{StaticResource btnOther}">CE</Button>
                 <Button Style="{StaticResource btnOther}">C</Button>
                 <Button Style="{StaticResource btnOther}">⌫</Button>
-                <Button Style="{StaticResource btnChar}">÷</Button>
-                <Button Style="{StaticResource btnNum}">7</Button>
-                <Button Style="{StaticResource btnNum}">8</Button>
-                <Button Style="{StaticResource btnNum}">9</Button>
-                <Button Style="{StaticResource btnChar}">×</Button>
-                <Button Style="{StaticResource btnNum}">4</Button>
-                <Button Style="{StaticResource btnNum}">5</Button>
-                <Button Style="{StaticResource btnNum}">6</Button>
-                <Button Style="{StaticResource btnChar}">-</Button>
-                <Button Style="{StaticResource btnNum}">1</Button>
-                <Button Style="{StaticResource btnNum}">2</Button>
-                <Button Style="{StaticResource btnNum}">3</Button>
-                <Button Style="{StaticResource btnChar}">+</Button>
+                <Button Style="{StaticResource btnChar}" Command="{Binding DivideCommand}">÷</Button>
+                <Button Style="{StaticResource btnNum}" Command="{Binding SevenCommand}">7</Button>
+                <Button Style="{StaticResource btnNum}" Command="{Binding EightCommand}">8</Button>
+                <Button Style="{StaticResource btnNum}" Command="{Binding NineCommand}">9</Button>
+                <Button Style="{StaticResource btnChar}" Command="{Binding MultiplyCommand}">×</Button>
+                <Button Style="{StaticResource btnNum}" Command="{Binding FourCommand}">4</Button>
+                <Button Style="{StaticResource btnNum}" Command="{Binding FiveCommand}">5</Button>
+                <Button Style="{StaticResource btnNum}" Command="{Binding SixCommand}">6</Button>
+                <Button Style="{StaticResource btnChar}" Command="{Binding SubtractCommand}">-</Button>
+                <Button Style="{StaticResource btnNum}" Command="{Binding OneCommand}">1</Button>
+                <Button Style="{StaticResource btnNum}" Command="{Binding TwoCommand}">2</Button>
+                <Button Style="{StaticResource btnNum}" Command="{Binding ThreeCommand}">3</Button>
+                <Button Style="{StaticResource btnChar}" Command="{Binding AddCommand}">+</Button>
                 <Button Style="{StaticResource btnOther}" FontSize="25">±</Button>
-                <Button Style="{StaticResource btnNum}">0</Button>
+                <Button Style="{StaticResource btnNum}" Command="{Binding ZeroCommand}">0</Button>
                 <Button Style="{StaticResource btnOther}">.</Button>
                 <Button Style="{StaticResource btnChar}">=</Button>
             </UniformGrid>
