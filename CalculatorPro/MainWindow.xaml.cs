@@ -28,5 +28,61 @@ namespace CalculatorPro
             InitializeComponent();
             this.DataContext = new CalViewModel();
         }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        private void TitleMove_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+        }
+        private void HisDisplay_Click(object sender, RoutedEventArgs e)
+        {
+
+            this.hisFlyout.Visibility = Visibility.Visible;
+            this.hisFlyout.Height = this.OutGrid.ActualHeight;
+            //判读用户控件是否打开
+            if (!this.hisFlyout.IsOpen)
+            {
+                this.hisFlyout.IsOpen = true;
+
+            }
+        }
+
+        private void MemDisplay_Click(object sender, RoutedEventArgs e)
+        {
+            this.memFlyout.Visibility = Visibility.Visible;
+            this.memFlyout.Height = this.OutGrid.ActualHeight;
+            //判读用户控件是否打开
+            if (!this.memFlyout.IsOpen)
+            {
+                this.memFlyout.IsOpen = true;
+
+            }
+        }
+        private void Max_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {   //窗口还原
+                this.WindowState = WindowState.Normal;
+                this.Max.Content = "☐";
+            }
+            else
+            {   //窗口最大化
+                this.WindowState = WindowState.Maximized;
+                this.Max.Content = "❐";
+            }
+        }
+        private void Min_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+
+
     }
 }

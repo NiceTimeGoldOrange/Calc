@@ -14,8 +14,11 @@ namespace CalculatorPro.View
     {
         public void ShowAnimation()
         {
+            
+        }
+        public void Close_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
-        
     }
 }

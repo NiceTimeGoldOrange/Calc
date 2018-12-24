@@ -17,13 +17,6 @@ namespace CalculatorPro.View
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.hisFlyout.Visibility = Visibility.Visible;
-            this.hisFlyout.Height = this.OutGrid.ActualHeight;
-            if (!this.hisFlyout.IsOpen)
-            {
-                this.hisFlyout.IsOpen = true;
-
-            }
         }
     }
 }

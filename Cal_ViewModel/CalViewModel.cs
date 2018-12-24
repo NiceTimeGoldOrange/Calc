@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Infrastructure;
+using System.Text.RegularExpressions;
 
 namespace Cal_ViewModel
 {
@@ -39,9 +40,21 @@ namespace Cal_ViewModel
             _sevenCommand = new NVCommand(SevenHandler);
             _eightCommand = new NVCommand(EightHandler);
             _nineCommand = new NVCommand(NineHandler);
-            
-        }
+            _pointCommand = new NVCommand(PointHandler);
 
+        }
+        private String _formDisPlay;
+        public string FormDisPlay
+        {
+            get
+            {
+                return _formDisPlay;
+            }
+            set
+            {
+                SetPropertyNotify(ref _formDisPlay, value, nameof(FormDisPlay));
+            }
+        }
         private String _disPlayText;
 
         public string DisPlayText
@@ -91,28 +104,28 @@ namespace Cal_ViewModel
             get => _divideCommand;
         }
 
-       
-        
+
+
 
 
         private void AddHandler()
         {
-            DisPlayText = "+    ";
+            DisPlayText = FormDisPlay + "  +    ";
         }
 
         private void SubtractHandler()
         {
-            DisPlayText = "-    ";
+            DisPlayText = FormDisPlay + "  -    ";
         }
 
         private void MultiplyHandler()
         {
-            DisPlayText = "×    ";
+            DisPlayText = FormDisPlay + "  ×    ";
         }
 
         private void DivideHandler()
         {
-            DisPlayText = "÷    ";
+            DisPlayText = FormDisPlay + "  ÷    ";
         }
         //绑定0
         private readonly NVCommand _zeroCommand;
@@ -122,7 +135,8 @@ namespace Cal_ViewModel
         }
         private void ZeroHandler()
         {
-            DisPlayBigText = DisPlayBigText+"0";
+            FormDisPlay = FormDisPlay + "0";
+            DisPlayBigText = TrisectionMethod(FormDisPlay);
         }
 
         //绑定1
@@ -133,7 +147,8 @@ namespace Cal_ViewModel
         }
         private void OneHandler()
         {
-            DisPlayBigText = DisPlayBigText+"1";
+            FormDisPlay = FormDisPlay + "1";
+            DisPlayBigText = TrisectionMethod(FormDisPlay);
         }
         //绑定2
         private readonly NVCommand _twoCommand;
@@ -143,7 +158,8 @@ namespace Cal_ViewModel
         }
         private void TwoHandler()
         {
-            DisPlayBigText = DisPlayBigText + "2";
+            FormDisPlay = FormDisPlay + "2";
+            DisPlayBigText = TrisectionMethod(FormDisPlay);
         }
         //绑定3
         private readonly NVCommand _threeCommand;
@@ -153,7 +169,8 @@ namespace Cal_ViewModel
         }
         private void ThreeHandler()
         {
-            DisPlayBigText = DisPlayBigText + "3";
+            FormDisPlay = FormDisPlay + "3";
+            DisPlayBigText = TrisectionMethod(FormDisPlay);
         }
         //绑定4
         private readonly NVCommand _fourCommand;
@@ -163,7 +180,8 @@ namespace Cal_ViewModel
         }
         private void FourHandler()
         {
-            DisPlayBigText = DisPlayBigText + "4";
+            FormDisPlay = FormDisPlay + "4";
+            DisPlayBigText = TrisectionMethod(FormDisPlay);
         }
         //绑定5
         private readonly NVCommand _fiveCommand;
@@ -173,7 +191,8 @@ namespace Cal_ViewModel
         }
         private void FiveHandler()
         {
-            DisPlayBigText = DisPlayBigText + "5";
+            FormDisPlay = FormDisPlay + "5";
+            DisPlayBigText = TrisectionMethod(FormDisPlay);
         }
         //绑定6
         private readonly NVCommand _sixCommand;
@@ -183,7 +202,8 @@ namespace Cal_ViewModel
         }
         private void SixHandler()
         {
-            DisPlayBigText = DisPlayBigText + "6";
+            FormDisPlay = FormDisPlay + "6";
+            DisPlayBigText = TrisectionMethod(FormDisPlay);
         }
         //绑定7
         private readonly NVCommand _sevenCommand;
@@ -193,7 +213,8 @@ namespace Cal_ViewModel
         }
         private void SevenHandler()
         {
-            DisPlayBigText = DisPlayBigText + "7";
+            FormDisPlay = FormDisPlay + "7";
+            DisPlayBigText = TrisectionMethod(FormDisPlay);
         }
         //绑定8
         private readonly NVCommand _eightCommand;
@@ -203,7 +224,8 @@ namespace Cal_ViewModel
         }
         private void EightHandler()
         {
-            DisPlayBigText = DisPlayBigText + "8";
+            FormDisPlay = FormDisPlay + "8";
+            DisPlayBigText = TrisectionMethod(FormDisPlay);
         }
         //绑定9
         private readonly NVCommand _nineCommand;
@@ -213,8 +235,50 @@ namespace Cal_ViewModel
         }
         private void NineHandler()
         {
-            DisPlayBigText = DisPlayBigText + "9";
-        }
+            
+            FormDisPlay = FormDisPlay+"9";
+            DisPlayBigText = TrisectionMethod(FormDisPlay);
 
+        }
+        //绑定 .
+        private readonly NVCommand _pointCommand;
+        public NVCommand PointCommand
+        {
+            get => _pointCommand;
+        }
+        private void PointHandler()
+        {   //判断.是否出现过
+            Boolean jd = true;
+            foreach (char element in DisPlayBigText)
+            {
+                if (element == '.')
+                {
+                    jd = false;
+                }
+            }
+            if (jd == true)
+            {
+                FormDisPlay = FormDisPlay + ".";
+                DisPlayBigText = TrisectionMethod(FormDisPlay);
+            }
+
+        }
+        //三位分节法
+        private string TrisectionMethod(String str)
+        {   //带小数的正则表达式判断
+            if (str.Contains(".") == true)
+            {
+                str = Regex.Replace(str, @"\d+?(?=(?:\d{3})+\.)", "$0,");
+            }
+            else
+            {
+                str = str + ".01";
+                str = Regex.Replace(str, @"\d+?(?=(?:\d{3})+\.)", "$0,");
+                string[] sArray = str.Split('.');
+                str = sArray.ElementAt(0);
+            }
+
+            return str;
+        }
     }
 }
