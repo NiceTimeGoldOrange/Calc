@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9431EA24-DD08-49C8-BF4B-19E4619BFC22}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cal_ViewModel</RootNamespace>
+    <AssemblyName>Cal_ViewModel</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="XamlMVVMInfrastructure">
+      <HintPath>..\..\XamlMVVMInfrastructure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CalViewModel.cs" />
+    <Compile Include="FormatFactory\AddCommon.cs" />
+    <Compile Include="FormatFactory\AddFormat.cs" />
+    <Compile Include="JudgeFactory\Equals.cs" />
+    <Compile Include="JudgeFactory\IJudgeForNumber.cs" />
+    <Compile Include="JudgeFactory\IJudgeForDot.cs" />
+    <Compile Include="JudgeFactory\IJudgeForOperator.cs" />
+    <Compile Include="JudgeFactory\IJudgeForSingle.cs" />
+    <Compile Include="JudgeFactory\IJudgeForZero.cs" />
+    <Compile Include="NumberFactory\NumberOneToNine.cs" />
+    <Compile Include="NumberFactory\NumberZero.cs" />
+    <Compile Include="OperatorModel\BasicOperation.cs" />
+    <Compile Include="OperatorModel\ComplexOperation.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveModel\Cache.cs" />
+    <Compile Include="SaveModel\History.cs" />
+    <Compile Include="SaveModel\Memory.cs" />
+    <Compile Include="SaveModel\IMSChange.cs" />
+    <Compile Include="SaveModel\IMSClear.cs" />
+    <Compile Include="SaveModel\IMSUse.cs" />
+    <Compile Include="Tools\MyMath.cs" />
+    <Compile Include="Tools\Rouding.cs" />
+    <Compile Include="TypeFactory\AddOperator.cs" />
+    <Compile Include="TypeFactory\AddSingle.cs" />
+    <Compile Include="TypeFactory\AddSymbol.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NumberFactory\Dot.cs" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
