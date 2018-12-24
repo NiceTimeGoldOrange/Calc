@@ -21,6 +21,9 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="#dadada"></Setter>
                         </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#bcbcbc"></Setter>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -45,6 +48,9 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="#e81123"></Setter>
                         </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#f1707a"></Setter>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -67,6 +73,9 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="#dadada"></Setter>
                         </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#c7c7c7"></Setter>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -76,11 +85,11 @@
     <!--数字按钮样式-->
     <Style x:Key="btnNum" TargetType="Button">
         <Setter Property="Background" Value="#fafafa"></Setter>
-        <Setter Property="FontSize" Value="22"></Setter>
+        <Setter Property="FontSize" Value="23.5"></Setter>
         <Setter Property="BorderThickness" Value="0"></Setter>
         <Setter Property="Margin" Value="1.5"></Setter>
-        <Setter Property="FontWeight" Value="Black"></Setter>
-        <Setter Property="FontFamily" Value="Malgun Gothic"></Setter>
+        <Setter Property="FontWeight" Value="Normal"></Setter>
+        <Setter Property="FontFamily" Value="Yu Gothic UI Semibold"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -90,6 +99,9 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="#dadada"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#c7c7c7"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -101,7 +113,7 @@
     <Style x:Key="btnOther" TargetType="Button">
         <Setter Property="Background" Value="#f0f0f0"></Setter>
         <Setter Property="FontSize" Value="15"></Setter>
-        <Setter Property="FontWeight" Value="Light"></Setter>
+        <Setter Property="FontWeight" Value="Medium"></Setter>
         <Setter Property="BorderThickness" Value="0"></Setter>
         <Setter Property="Margin" Value="1.5"></Setter>
         <Setter Property="Template">
@@ -113,6 +125,9 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="#dadada"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#c9c9c9"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -137,13 +152,16 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="#3e3e3e"></Setter>
                         </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#7b7b7b"></Setter>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
     <!--标准栏按钮样式-->
-    <Style  x:Key="btnStandard" TargetType="Button">
+    <Style  x:Key="btnNav" TargetType="Button">
         <Setter Property="Width" Value="40.75"></Setter>
         <Setter Property="Height" Value="40.75"></Setter>
         <Setter Property="BorderThickness" Value="0"></Setter>
@@ -161,16 +179,65 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="#dadada"></Setter>
                         </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#8d8d8d"></Setter>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
     </Style>
-
+    <Style  x:Key="btnHis" TargetType="Button">
+        <Setter Property="Width" Value="40.75"></Setter>
+        <Setter Property="Height" Value="40.75"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Background" Value="#e6e6e6"></Setter>
+        <Setter Property="FontSize" Value="21"></Setter>
+        <Setter Property="FontWeight" Value="Light"></Setter>
+        <Setter Property="FontFamily" Value="新宋体"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#dadada"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#c9c9c9"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--标准文字样式-->
     <Style x:Key="lblText" TargetType="Label">
         <Setter Property="FontSize" Value="20"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
     </Style>
     
+    <!--文本框样式-->
+    <Style x:Key="txtBigBox" TargetType="TextBox">
+        <Setter Property="Background" Value="#e6e6e6"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="IsReadOnly" Value="True"></Setter>
+        <Setter Property="TextAlignment" Value="Right"></Setter>
+        <Setter Property="FontSize" Value="45"></Setter>
+        <Setter Property="FontFamily" Value="Yu Gothic UI"></Setter>
+        <Setter Property="FontWeight" Value="ExtraBold"></Setter>
+    </Style>
+
+    <Style x:Key="txtSmallBox" TargetType="TextBox">
+        <Setter Property="Background" Value="#e6e6e6"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="IsReadOnly" Value="True"></Setter>
+        <Setter Property="TextAlignment" Value="Right"></Setter>
+        <Setter Property="FontSize" Value="14.5"></Setter>
+        <Setter Property="Foreground" Value="#6d6d6d"></Setter>
+        <Setter Property="FontFamily" Value="Yu Gothic UI Semilight"></Setter>
+    </Style>
+        
 </ResourceDictionary>
