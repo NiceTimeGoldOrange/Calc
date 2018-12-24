@@ -249,7 +249,6 @@ namespace Cal_ViewModel
         private void PointHandler()
         {   //判断.是否出现过
             Boolean jd = true;
-            Boolean test = false;
             foreach (char element in DisPlayBigText)
             {
                 if (element == '.')
