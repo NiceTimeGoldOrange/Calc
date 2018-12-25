@@ -170,6 +170,12 @@
       <Name>Cal_ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Img\His.png" />
+    <Resource Include="Resources\Img\Mem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\ImgClock.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
