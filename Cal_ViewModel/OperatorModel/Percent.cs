@@ -4,22 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cal_ViewModel.Operator
+namespace Cal_ViewModel.OperatorModel
 {/// <summary>
 /// 百分比
 /// </summary>
     public class Percent : IOperator
     {
-        public decimal GetResult(decimal i1, decimal i2)
+        public string GetResult(string i1, string i2)
         {
-            return i1 + i1 * i2 / 100;
-        }
+            decimal num1 = decimal.Parse(i1);
+            decimal num2 = decimal.Parse(i2);
 
-        public static void Main(string[] args)
-        {
-            Percent p = new Percent();
-            Console.WriteLine(p.GetResult(2m, 3m));
-            Console.ReadKey();
+            decimal num = num1 + num1 * num2 / 100;
+            return MyMathTools.MyMath.MyRouding(num.ToString());
         }
     }
 }

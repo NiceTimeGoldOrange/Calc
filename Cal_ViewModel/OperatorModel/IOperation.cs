@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cal_ViewModel.StoreModel
+namespace Cal_ViewModel.OperatorModel
 {
-    interface IStore
+    interface IOperator
     {
-        List<decimal> StoreMem(decimal i1);
+        string GetResult(string i1, string i2);
     }
 }

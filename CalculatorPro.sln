@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cal_ViewModel", "Cal_ViewMo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cal_ViewModelTests", "Cal_ViewModelTests\Cal_ViewModelTests.csproj", "{7946764C-23F1-471B-A804-E7734F8DBB4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMathTools", "MyMathTools\MyMathTools.csproj", "{EA9907E2-136F-4F06-8B24-A3C11AF122AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "History_Memory", "History_Memory\History_Memory.csproj", "{CC623C91-A33C-41A7-8A63-15F097201F69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{7946764C-23F1-471B-A804-E7734F8DBB4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7946764C-23F1-471B-A804-E7734F8DBB4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7946764C-23F1-471B-A804-E7734F8DBB4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA9907E2-136F-4F06-8B24-A3C11AF122AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA9907E2-136F-4F06-8B24-A3C11AF122AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA9907E2-136F-4F06-8B24-A3C11AF122AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA9907E2-136F-4F06-8B24-A3C11AF122AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC623C91-A33C-41A7-8A63-15F097201F69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC623C91-A33C-41A7-8A63-15F097201F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC623C91-A33C-41A7-8A63-15F097201F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC623C91-A33C-41A7-8A63-15F097201F69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
