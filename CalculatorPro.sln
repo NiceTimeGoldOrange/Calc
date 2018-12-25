@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMathTools", "MyMathTools\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "History_Memory", "History_Memory\History_Memory.csproj", "{CC623C91-A33C-41A7-8A63-15F097201F69}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cal_ViewTests", "Cal_ViewTests\Cal_ViewTests.csproj", "{27A5F757-4353-4991-BB7D-5C1478CECCA4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{CC623C91-A33C-41A7-8A63-15F097201F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC623C91-A33C-41A7-8A63-15F097201F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC623C91-A33C-41A7-8A63-15F097201F69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27A5F757-4353-4991-BB7D-5C1478CECCA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27A5F757-4353-4991-BB7D-5C1478CECCA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27A5F757-4353-4991-BB7D-5C1478CECCA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27A5F757-4353-4991-BB7D-5C1478CECCA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
