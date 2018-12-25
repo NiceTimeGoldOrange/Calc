@@ -8,8 +8,9 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:CalculatorPro"
         mc:Ignorable="d"
+        x:Name="Window"
         Height="501" Width="321.5" MinHeight="501" MinWidth="321.5" WindowStyle="None" ShowTitleBar="False" ShowMaxRestoreButton="False" ShowCloseButton="False" ShowMinButton="False" BorderBrush="Black">
-    <Grid Background="#e6e6e6">
+    <Grid Background="#e6e6e6" Name="AllGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="36.675"/>
             <RowDefinition Height="42*"/>
@@ -19,37 +20,40 @@
             <RowDefinition Height="293*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="0,0,-0.4,0.8" MouseMove="TitleMove_MouseMove">
-            <Label VerticalAlignment="Center" Content="  计算器"/>
-            <DockPanel LastChildFill="False" VerticalAlignment="Top">
-                <Button  DockPanel.Dock="Right" Style="{StaticResource btnClose}" FontSize="15" Click="Close_Click">×</Button>
-                <Button  DockPanel.Dock="Right" Style="{StaticResource btnMinAndMax}" FontSize="13.5" FontWeight="ExtraLight" Click="Max_Click" x:Name="Max">☐</Button>
-                <Button  DockPanel.Dock="Right" Style="{StaticResource btnMinAndMax}" FontSize="20" Click="Min_Click">-</Button>
-            </DockPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" MouseMove="TitleMove_MouseMove" Name="TitleBar">
+        <DockPanel LastChildFill="False" VerticalAlignment="Top" >
+                <Label DockPanel.Dock="Left"  VerticalAlignment="Center" Content="  计算器"  MouseMove="TitleMove_MouseMove" Width="176"/>
+            <Button  DockPanel.Dock="Right" Style="{StaticResource btnClose}" FontSize="15" Click="Close_Click">×</Button>
+            <Button  DockPanel.Dock="Right" Style="{StaticResource btnMinAndMax}" FontSize="13.5" FontWeight="ExtraLight" Click="Max_Click" x:Name="Max">☐</Button>
+            <Button  DockPanel.Dock="Right" Style="{StaticResource btnMinAndMax}" FontSize="20" Click="Min_Click">-</Button>
+        </DockPanel>
         </Grid>
-        <DockPanel Grid.Row="1" Margin="0,0.2,-0.4,18" Grid.RowSpan="2">
+        <DockPanel Grid.Row="1"  Name="Two_Row">
             <Button DockPanel.Dock="Left" Style="{StaticResource btnNav}" >≡</Button>
-            <Button DockPanel.Dock="Right" Style="{StaticResource btnHis}" Click="HisDisplay_Click">◷</Button>
+            <Button DockPanel.Dock="Right" Style="{StaticResource btnHis}" Name="btnHis" Click="HisDisplay_Click">◷</Button>
             <Label  DockPanel.Dock="Left" Style="{StaticResource lblText}">标准</Label>
-            
         </DockPanel>
         <Border Grid.Row="2">
             <TextBox Style="{StaticResource txtSmallBox}" Text="{Binding DisPlayText}"></TextBox>
         </Border>
-        <Border Grid.Row="3" Margin="0,0,-0.4,0.2">
+        <Border Grid.Row="3">
             <TextBox  Style="{StaticResource txtBigBox}" Text="{Binding DisPlayBigText}"></TextBox>
         </Border>
-        <Grid Grid.Row="3" Margin="0,71,-0.4,0.2" Grid.RowSpan="2" x:Name="GridMem" >
-            <UniformGrid Rows="1" >
+        <Grid Grid.Row="4" x:Name="GridMem" >
+            <UniformGrid Rows="1" Columns="6" Name="uniformMem">
                 <Button  Style="{StaticResource btnMem}">MC</Button>
                 <Button  Style="{StaticResource btnMem}">MR</Button>
                 <Button  Style="{StaticResource btnMem}">M+</Button>
                 <Button  Style="{StaticResource btnMem}">M-</Button>
                 <Button  Style="{StaticResource btnMem}">MS</Button>
-                <Button  Style="{StaticResource btnMem}"  Click="MemDisplay_Click">M▾</Button>
+                <Button  Style="{StaticResource btnMem}" Name="btnM" Click="MemDisplay_Click">M▾</Button>
             </UniformGrid>
         </Grid>
-        <Grid Grid.Row="4" Margin="0,31.8,-0.4,0" Grid.RowSpan="2" x:Name="OutGrid">
+        <Grid Grid.Row="5"  x:Name="OutGrid">
             <UniformGrid Rows="6" Columns="4">
                 <Button Style="{StaticResource btnOther}">%</Button>
                 <Button Style="{StaticResource btnOther}">√</Button>
@@ -77,7 +81,6 @@
                 <Button Style="{StaticResource btnChar}">=</Button>
             </UniformGrid>
         </Grid>
-        <Grid Grid.RowSpan="5" Margin="0,0,-0.4,0.2"></Grid>
     </Grid>
     <metro:MetroWindow.Flyouts>
         <metro:FlyoutsControl >

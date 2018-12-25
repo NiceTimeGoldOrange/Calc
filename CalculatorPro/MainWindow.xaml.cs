@@ -27,6 +27,7 @@ namespace CalculatorPro
         {
             InitializeComponent();
             this.DataContext = new CalViewModel();
+            this.SizeChanged += new System.Windows.SizeChangedEventHandler(MainWindow_Resize);
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
@@ -80,6 +81,40 @@ namespace CalculatorPro
         private void Min_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+
+        HisAndMemDis ham = new HisAndMemDis();
+        ColumnDefinition col = new ColumnDefinition();
+        bool flag = false;
+        private void MainWindow_Resize(object sender, System.EventArgs e)
+        { 
+            
+            if ( Window.ActualWidth > 563 && !flag)
+            {
+
+                AllGrid.ColumnDefinitions.Add(col);
+                TitleBar.SetValue(Grid.ColumnSpanProperty, 3);
+                AllGrid.Children.Add(ham);
+                ham.SetValue(Grid.RowProperty, 1);
+                ham.SetValue(Grid.RowSpanProperty, 6);
+                ham.SetValue(Grid.ColumnProperty, 2);
+                col.Width = new GridLength(248.6);
+                btnM.Visibility = Visibility.Hidden;
+                btnHis.Visibility = Visibility.Collapsed;
+                flag = true;
+                uniformMem.Columns = 5;
+            }
+            if ( flag && Window.ActualWidth < 563)
+            {
+                AllGrid.ColumnDefinitions.RemoveAt(2);
+                AllGrid.Children.Remove(ham);
+                btnM.Visibility = Visibility.Visible;
+                btnHis.Visibility = Visibility.Visible;
+                uniformMem.Columns = 6;
+                flag = false;
+            }
+
         }
 
 

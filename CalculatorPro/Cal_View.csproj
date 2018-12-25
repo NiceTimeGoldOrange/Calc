@@ -76,6 +76,12 @@
     <Compile Include="TestDemo\TestUser.xaml.cs">
       <DependentUpon>TestUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TestDemo\WindowTest.xaml.cs">
+      <DependentUpon>WindowTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HisAndMemDis.xaml.cs">
+      <DependentUpon>HisAndMemDis.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Close.cs" />
     <Compile Include="View\FontSizeChange.cs" />
     <Compile Include="View\FrostedGlass.cs" />
@@ -118,6 +124,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TestDemo\TestUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestDemo\WindowTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HisAndMemDis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
