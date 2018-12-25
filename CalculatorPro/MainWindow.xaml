@@ -18,7 +18,7 @@
             <RowDefinition Height="71*"/>
             <RowDefinition Height="32*"/>
             <RowDefinition Height="293*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -42,7 +42,7 @@
             <TextBox Style="{StaticResource txtSmallBox}" Text="{Binding DisPlayText}"></TextBox>
         </Border>
         <Border Grid.Row="3">
-            <TextBox  Style="{StaticResource txtBigBox}" Text="{Binding DisPlayBigText}"></TextBox>
+            <TextBox  Style="{StaticResource txtBigBox}" Text="{Binding DisPlayBigText}" ></TextBox>
         </Border>
         <Grid Grid.Row="4" x:Name="GridMem" >
             <UniformGrid Rows="1" Columns="6" Name="uniformMem">
@@ -55,13 +55,14 @@
             </UniformGrid>
         </Grid>
         <Grid Grid.Row="5"  x:Name="OutGrid">
-            <UniformGrid Rows="6" Columns="4">
+            <UniformGrid Rows="6" Columns="4" Name="uniformNum" Margin="3,0,3,0">
                 <Button Style="{StaticResource btnOther}">%</Button>
                 <Button Style="{StaticResource btnOther}" FontFamily="Segoe UI Symbol" >√</Button>
                 <Button Style="{StaticResource btnOther}" >x²</Button>
                 <Button Style="{StaticResource btnOther}">⅟x</Button>
                 <Button Style="{StaticResource btnOther}">CE</Button>
                 <Button Style="{StaticResource btnOther}">C</Button>
+                <Button Style="{StaticResource btnOther}" Visibility="Collapsed" Name="add">x³</Button>
                 <Button Style="{StaticResource btnOther}" FontFamily="Wingdings">Õ</Button>
                 <Button Style="{StaticResource btnChar}" Command="{Binding DivideCommand}">÷</Button>
                 <Button Style="{StaticResource btnNum}" Command="{Binding SevenCommand}">7</Button>
@@ -80,6 +81,7 @@
                 <Button Style="{StaticResource btnNum}" Command="{Binding ZeroCommand}">0</Button>
                 <Button Style="{StaticResource btnOther}" Command="{Binding PointCommand}" FontWeight="DemiBold">.</Button>
                 <Button Style="{StaticResource btnChar}">=</Button>
+                
             </UniformGrid>
         </Grid>
     </Grid>

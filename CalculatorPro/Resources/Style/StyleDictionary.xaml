@@ -112,7 +112,7 @@
     <!--其他按钮样式-->
     <Style x:Key="btnOther" TargetType="Button">
         <Setter Property="Background" Value="#f0f0f0"></Setter>
-        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="FontSize" Value="15"></Setter>
         <Setter Property="FontWeight" Value="Medium"></Setter>
         <Setter Property="BorderThickness" Value="0"></Setter>
         <Setter Property="Margin" Value="1.5"></Setter>
