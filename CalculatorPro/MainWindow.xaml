@@ -20,18 +20,21 @@
             <RowDefinition Height="293*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
         <Grid Grid.Row="0" MouseMove="TitleMove_MouseMove" Name="TitleBar">
-            <Label VerticalAlignment="Center" Content="  计算器"/>
-            <DockPanel LastChildFill="False" VerticalAlignment="Top">
-                <Button  DockPanel.Dock="Right" Style="{StaticResource btnClose}" FontSize="15" Click="Close_Click">×</Button>
-                <Button  DockPanel.Dock="Right" Style="{StaticResource btnMinAndMax}" FontSize="13.5" FontWeight="ExtraLight" Click="Max_Click" x:Name="Max">☐</Button>
-                <Button  DockPanel.Dock="Right" Style="{StaticResource btnMinAndMax}" FontSize="20" Click="Min_Click">-</Button>
-            </DockPanel>
+        <DockPanel LastChildFill="False" VerticalAlignment="Top" >
+                <Label DockPanel.Dock="Left"  VerticalAlignment="Center" Content="  计算器"  MouseMove="TitleMove_MouseMove" Width="176"/>
+            <Button  DockPanel.Dock="Right" Style="{StaticResource btnClose}" FontSize="15" Click="Close_Click">×</Button>
+            <Button  DockPanel.Dock="Right" Style="{StaticResource btnMinAndMax}" FontSize="13.5" FontWeight="ExtraLight" Click="Max_Click" x:Name="Max">☐</Button>
+            <Button  DockPanel.Dock="Right" Style="{StaticResource btnMinAndMax}" FontSize="20" Click="Min_Click">-</Button>
+        </DockPanel>
         </Grid>
         <DockPanel Grid.Row="1"  Name="Two_Row">
             <Button DockPanel.Dock="Left" Style="{StaticResource btnNav}" >≡</Button>
-            <Button DockPanel.Dock="Right" Style="{StaticResource btnHis}" Click="HisDisplay_Click">◷</Button>
+            <Button DockPanel.Dock="Right" Style="{StaticResource btnHis}" Name="btnHis" Click="HisDisplay_Click">◷</Button>
             <Label  DockPanel.Dock="Left" Style="{StaticResource lblText}">标准</Label>
         </DockPanel>
         <Border Grid.Row="2">
@@ -41,13 +44,13 @@
             <TextBox  Style="{StaticResource txtBigBox}" Text="{Binding DisPlayBigText}"></TextBox>
         </Border>
         <Grid Grid.Row="4" x:Name="GridMem" >
-            <UniformGrid Rows="1" >
+            <UniformGrid Rows="1" Columns="6" Name="uniformMem">
                 <Button  Style="{StaticResource btnMem}">MC</Button>
                 <Button  Style="{StaticResource btnMem}">MR</Button>
                 <Button  Style="{StaticResource btnMem}">M+</Button>
                 <Button  Style="{StaticResource btnMem}">M-</Button>
                 <Button  Style="{StaticResource btnMem}">MS</Button>
-                <Button  Style="{StaticResource btnMem}"  Click="MemDisplay_Click">M▾</Button>
+                <Button  Style="{StaticResource btnMem}" Name="btnM" Click="MemDisplay_Click">M▾</Button>
             </UniformGrid>
         </Grid>
         <Grid Grid.Row="5"  x:Name="OutGrid">

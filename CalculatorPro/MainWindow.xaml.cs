@@ -83,37 +83,36 @@ namespace CalculatorPro
             this.WindowState = WindowState.Minimized;
         }
 
+
+        HisAndMemDis ham = new HisAndMemDis();
+        ColumnDefinition col = new ColumnDefinition();
+        bool flag = false;
         private void MainWindow_Resize(object sender, System.EventArgs e)
-        {
-            Button btnHis = new Button();
-            Button btnMem = new Button();
-            if (AllGrid.ColumnDefinitions.Count < 2 && Window.ActualWidth > 563 )
-            {       
-                    btnHis.Name = "_btnHis";
-                    btnMem.Name = "_btnMem";
-                    btnHis.Content = "历史记录";
-                    btnMem.Content = "内存";
-                    btnHis.Width = 65;
-                    btnMem.Width = 34.5;
-                    btnHis.Margin = new Thickness(25, 8, 166, 0);
-                    btnMem.Margin = new Thickness(111, 8, 105, 0);
-                    btnHis.Style = FindResource("btnHisAndMem") as Style;
-                    btnMem.Style = FindResource("btnHisAndMem") as Style;
-                    AllGrid.ColumnDefinitions.Add(new ColumnDefinition());
-                    Grid.SetColumnSpan(TitleBar, 2);
-                    AllGrid.Children.Add(btnHis);
-                    AllGrid.Children.Add(btnMem);
-                    btnHis.SetValue(Grid.ColumnProperty, 1);
-                    btnHis.SetValue(Grid.RowProperty, 1);
-                    btnMem.SetValue(Grid.ColumnProperty, 1);
-                    btnMem.SetValue(Grid.RowProperty, 1);
-                
-            }
-            if (Window.ActualWidth < 563)
+        { 
+            
+            if ( Window.ActualWidth > 563 && !flag)
             {
-                AllGrid.Children.Remove(btnHis);
-                AllGrid.Children.Remove(btnMem);
-                AllGrid.ColumnDefinitions.Clear();
+
+                AllGrid.ColumnDefinitions.Add(col);
+                TitleBar.SetValue(Grid.ColumnSpanProperty, 3);
+                AllGrid.Children.Add(ham);
+                ham.SetValue(Grid.RowProperty, 1);
+                ham.SetValue(Grid.RowSpanProperty, 6);
+                ham.SetValue(Grid.ColumnProperty, 2);
+                col.Width = new GridLength(248.6);
+                btnM.Visibility = Visibility.Hidden;
+                btnHis.Visibility = Visibility.Collapsed;
+                flag = true;
+                uniformMem.Columns = 5;
+            }
+            if ( flag && Window.ActualWidth < 563)
+            {
+                AllGrid.ColumnDefinitions.RemoveAt(2);
+                AllGrid.Children.Remove(ham);
+                btnM.Visibility = Visibility.Visible;
+                btnHis.Visibility = Visibility.Visible;
+                uniformMem.Columns = 6;
+                flag = false;
             }
 
         }
