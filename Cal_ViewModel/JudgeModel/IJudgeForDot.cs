@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cal_ViewModel
+namespace Cal_ViewModel.JudgeModel
 {
-    interface IOperator
+    interface IJudgeForDot
     {
-        decimal GetResult(decimal i1, decimal i2);
+        string Judgefordot();
     }
 }
