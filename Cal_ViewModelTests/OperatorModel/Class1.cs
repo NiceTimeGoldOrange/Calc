@@ -10,7 +10,7 @@ namespace Cal_ViewModelTests.OperatorModel
     {
         public static void Main(string[] args)
         {
-            decimal i1 = 
+            decimal i1 = 11111;
         }
     }
 }
