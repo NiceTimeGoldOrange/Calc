@@ -71,11 +71,17 @@ namespace CalculatorPro
             {   //窗口还原
                 this.WindowState = WindowState.Normal;
                 this.Max.Content = "☐";
+                uniformNum.Rows = 6;
+                uniformNum.Columns = 4;
+                add.Visibility = Visibility.Collapsed;
             }
             else
             {   //窗口最大化
                 this.WindowState = WindowState.Maximized;
                 this.Max.Content = "❐";
+                uniformNum.Rows = 5;
+                uniformNum.Columns = 5;
+                add.Visibility = Visibility.Visible;
             }
         }
         private void Min_Click(object sender, RoutedEventArgs e)
@@ -92,14 +98,17 @@ namespace CalculatorPro
             
             if ( Window.ActualWidth > 563 && !flag)
             {
-
+                //添加新定义的一行
                 AllGrid.ColumnDefinitions.Add(col);
+                //将自定义标题栏与用户控件合并行
                 TitleBar.SetValue(Grid.ColumnSpanProperty, 3);
                 AllGrid.Children.Add(ham);
                 ham.SetValue(Grid.RowProperty, 1);
                 ham.SetValue(Grid.RowSpanProperty, 6);
                 ham.SetValue(Grid.ColumnProperty, 2);
                 col.Width = new GridLength(248.6);
+                //col.MinWidth = 248.6;
+                //col.MaxWidth = 330;
                 btnM.Visibility = Visibility.Hidden;
                 btnHis.Visibility = Visibility.Collapsed;
                 flag = true;

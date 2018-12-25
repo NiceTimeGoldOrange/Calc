@@ -37,7 +37,7 @@ namespace CalculatorPro
                 ImgMem.Visibility = Visibility.Hidden;
                 lstBoxShow.From = 0;
                 lstBoxShow.To = 1;                
-                lstBoxShow.Duration = TimeSpan.FromSeconds(0.3);
+                lstBoxShow.Duration = TimeSpan.FromSeconds(0.4);
                 lstHis.BeginAnimation(Border.OpacityProperty, lstBoxShow);
                 ImgHis.BeginAnimation(Grid.OpacityProperty, lstBoxShow);
             }
@@ -52,7 +52,7 @@ namespace CalculatorPro
                 ImgHis.Visibility = Visibility.Hidden;
                 lstBoxShow.From = 0;
                 lstBoxShow.To = 1;
-                lstBoxShow.Duration = TimeSpan.FromSeconds(0.3);
+                lstBoxShow.Duration = TimeSpan.FromSeconds(0.4);
                 lstMem.BeginAnimation(Border.OpacityProperty, lstBoxShow);
                 ImgMem.BeginAnimation(Grid.OpacityProperty, lstBoxShow);
             }

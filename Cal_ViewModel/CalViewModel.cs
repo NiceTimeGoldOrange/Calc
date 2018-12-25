@@ -235,8 +235,8 @@ namespace Cal_ViewModel
         }
         private void NineHandler()
         {
-            
-            FormDisPlay = FormDisPlay+"9";
+
+            FormDisPlay = FormDisPlay + "9";
             DisPlayBigText = TrisectionMethod(FormDisPlay);
 
         }
@@ -264,21 +264,24 @@ namespace Cal_ViewModel
 
         }
         //三位分节法
-        private string TrisectionMethod(String str)
-        {   //带小数的正则表达式判断
-            if (str.Contains(".") == true)
-            {
-                str = Regex.Replace(str, @"\d+?(?=(?:\d{3})+\.)", "$0,");
-            }
-            else
-            {
-                str = str + ".01";
-                str = Regex.Replace(str, @"\d+?(?=(?:\d{3})+\.)", "$0,");
-                string[] sArray = str.Split('.');
-                str = sArray.ElementAt(0);
-            }
+            private string TrisectionMethod(String str)
+            {   //带小数的正则表达式判断
+                if (str.Contains(".") == true)
+                {
+                    str = Regex.Replace(str, @"\d+?(?=(?:\d{3})+\.)", "$0,");
+                }
+                else
+                {
+                    str = str + ".01";
+                    str = Regex.Replace(str, @"\d+?(?=(?:\d{3})+\.)", "$0,");
+                    string[] sArray = str.Split('.');
+                    str = sArray.ElementAt(0);
+                }
 
-            return str;
+                return str;
+            }
         }
+
     }
-}
+
+    
