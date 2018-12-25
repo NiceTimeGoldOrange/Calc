@@ -61,8 +61,8 @@
         <Setter Property="BorderThickness" Value="0"></Setter>
         <Setter Property="FontWeight" Value="Black"></Setter>
         <Setter Property="Background" Value="#e6e6e6"></Setter>
-        <Setter Property="FontSize" Value="11.5"></Setter>
-        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
+        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="FontFamily" Value="Yu Gothic UI Semibold"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -112,7 +112,7 @@
     <!--其他按钮样式-->
     <Style x:Key="btnOther" TargetType="Button">
         <Setter Property="Background" Value="#f0f0f0"></Setter>
-        <Setter Property="FontSize" Value="15"></Setter>
+        <Setter Property="FontSize" Value="18"></Setter>
         <Setter Property="FontWeight" Value="Medium"></Setter>
         <Setter Property="BorderThickness" Value="0"></Setter>
         <Setter Property="Margin" Value="1.5"></Setter>
@@ -240,12 +240,105 @@
         <Setter Property="FontFamily" Value="Yu Gothic UI Semilight"></Setter>
     </Style>
     <!--扩展历史界面样式-->
-    <Style x:Key="btnHisAndMem" TargetType="Button">
+    <Style x:Key="btnHisExtra" TargetType="Button">
         <Setter Property="FontSize" Value="15"></Setter>
         <Setter Property="FontFamily" Value="微软雅黑"></Setter>
         <Setter Property="FontWeight" Value="Black"></Setter>
         <Setter Property="Height" Value="32.6"></Setter>
-        <Setter Property="BorderThickness" Value="0,0,0,3.5"></Setter>
         <Setter Property="Background" Value="#e6e6e6"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border BorderBrush="#e6e6e6" BorderThickness="0,0,0,3.5" Name="Border">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#e6e6e6"></Setter>
+                            <Setter Property="Opacity" Value="0.8"></Setter>
+                        </Trigger>
+                        
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="btnMemExtra" TargetType="Button">
+        <Setter Property="FontSize" Value="15"></Setter>
+        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
+        <Setter Property="FontWeight" Value="Black"></Setter>
+        <Setter Property="Height" Value="32.6"></Setter>
+        <Setter Property="Background" Value="#e6e6e6"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border BorderBrush="#e6e6e6" BorderThickness="0,0,0,3.5" Name="Border">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#e6e6e6"></Setter>
+                            <Setter Property="Opacity" Value="0.8"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--历史内存界面listboxItme样式-->
+    <Style x:Key="lstItem" TargetType="ListBoxItem">
+        <Setter Property="Background" Value="#e6e6e6"></Setter>
+        <Setter Property="Height" Value="69.275"></Setter>
+        <Setter Property="FontSize" Value="20"></Setter>
+    </Style>
+    <Style x:Key="lstItemHisDefault" TargetType="ListBoxItem">
+        <Setter Property="Background" Value="#e6e6e6"></Setter>
+        <Setter Property="Height" Value="69.275"></Setter>
+        <Setter Property="FontSize" Value="15"></Setter>
+        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
+        <Setter Property="FontWeight" Value="Black"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#e6e6e6"></Setter>
+                            <Setter Property="BorderThickness" Value="0"></Setter>
+                            <Setter Property="IsEnabled" Value="False"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="lstItemMemDefault" TargetType="ListBoxItem">
+        <Setter Property="Background" Value="#e6e6e6"></Setter>
+        <Setter Property="Height" Value="69.275"></Setter>
+        <Setter Property="FontSize" Value="15"></Setter>
+        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
+        <Setter Property="FontWeight" Value="Black"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#e6e6e6"></Setter>
+                            <Setter Property="BorderThickness" Value="0"></Setter>
+                            <Setter Property="IsEnabled" Value="False"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>
