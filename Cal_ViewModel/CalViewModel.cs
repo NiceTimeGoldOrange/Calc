@@ -39,7 +39,7 @@ namespace Cal_ViewModel
         Equals eq = new Equals();
         History_Memory his = new History_Memory();
         Memory mem = new Memory();
-        public string DisPlayTextUnder
+        public string DisPlayBigText
         {
             get
             {
@@ -47,11 +47,11 @@ namespace Cal_ViewModel
             }
             set
             {
-                SetPropertyNotify(ref _disPlayBigText, value, nameof(DisPlayTextUnder));
+                SetPropertyNotify(ref _disPlayBigText, value, nameof(DisPlayBigText));
             }
         }
 
-        public string DisPlayTextTop
+        public string DisPlayText
         {
             get
             {
@@ -59,7 +59,7 @@ namespace Cal_ViewModel
             }
             set
             {
-                SetPropertyNotify(ref _disPlayText, value, nameof(DisPlayTextTop));
+                SetPropertyNotify(ref _disPlayText, value, nameof(DisPlayText));
             }
         }
         //+
@@ -275,137 +275,137 @@ namespace Cal_ViewModel
 
         private void AddHandler()
         {
-            DisPlayTextTop = addOperator.JudgeOperator("＋");
-            DisPlayTextUnder = AddFormat.Addformat(AddCommon.Addcommon(Cache.underCache));
+            DisPlayText= addOperator.JudgeOperator("＋");
+            DisPlayBigText = AddFormat.Addformat(AddCommon.Addcommon(Cache.underCache));
         }
 
         private void SubtractHandler()
         {
-            DisPlayTextTop = addOperator.JudgeOperator("－");
-            DisPlayTextUnder = AddFormat.Addformat(AddCommon.Addcommon(Cache.underCache));
+            DisPlayText = addOperator.JudgeOperator("－");
+            DisPlayBigText = AddFormat.Addformat(AddCommon.Addcommon(Cache.underCache));
         }
 
         private void MultiplyHandler()
         {
-            DisPlayTextTop = addOperator.JudgeOperator("×");
-            DisPlayTextUnder = AddFormat.Addformat(AddCommon.Addcommon(Cache.underCache));
+            DisPlayText = addOperator.JudgeOperator("×");
+            DisPlayBigText = AddFormat.Addformat(AddCommon.Addcommon(Cache.underCache));
         }
 
         private void DivideHandler()
         {
-            DisPlayTextTop = addOperator.JudgeOperator("÷");
-            DisPlayTextUnder = AddFormat.Addformat(AddCommon.Addcommon(Cache.underCache));
+            DisPlayText = addOperator.JudgeOperator("÷");
+            DisPlayBigText = AddFormat.Addformat(AddCommon.Addcommon(Cache.underCache));
         }
 
         //添加添加0-9数字的方法
         private void Num1Handler()
         {
-            DisPlayTextUnder = AddCommon.Addcommon(addNum.Judgefornumber("1"));
-            DisPlayTextTop = Cache.topCache;
+            DisPlayBigText = AddCommon.Addcommon(addNum.Judgefornumber("1"));
+            DisPlayText = Cache.topCache;
 
         }
         private void Num2Handler()
         {
-            DisPlayTextUnder = AddCommon.Addcommon(addNum.Judgefornumber("2"));
-            DisPlayTextTop = Cache.topCache;
+            DisPlayBigText = AddCommon.Addcommon(addNum.Judgefornumber("2"));
+            DisPlayText = Cache.topCache;
         }
         private void Num3Handler()
         {
 
-            DisPlayTextUnder = AddCommon.Addcommon(addNum.Judgefornumber("3"));
-            DisPlayTextTop = Cache.topCache;
+            DisPlayBigText= AddCommon.Addcommon(addNum.Judgefornumber("3"));
+            DisPlayText = Cache.topCache;
 
         }
         private void Num4Handler()
         {
-            DisPlayTextUnder = AddCommon.Addcommon(addNum.Judgefornumber("4"));
-            DisPlayTextTop = Cache.topCache;
+            DisPlayBigText = AddCommon.Addcommon(addNum.Judgefornumber("4"));
+            DisPlayText= Cache.topCache;
 
         }
         private void Num5Handler()
         {
-            DisPlayTextUnder = AddCommon.Addcommon(addNum.Judgefornumber("5"));
-            DisPlayTextTop = Cache.topCache;
+            DisPlayBigText = AddCommon.Addcommon(addNum.Judgefornumber("5"));
+            DisPlayText = Cache.topCache;
         }
         private void Num6Handler()
         {
-            DisPlayTextUnder = AddCommon.Addcommon(addNum.Judgefornumber("6"));
-            DisPlayTextTop = Cache.topCache;
+            DisPlayBigText = AddCommon.Addcommon(addNum.Judgefornumber("6"));
+            DisPlayText = Cache.topCache;
 
         }
         private void Num7Handler()
         {
-            DisPlayTextUnder = AddCommon.Addcommon(addNum.Judgefornumber("7"));
-            DisPlayTextTop = Cache.topCache;
+            DisPlayBigText = AddCommon.Addcommon(addNum.Judgefornumber("7"));
+            DisPlayText = Cache.topCache;
 
         }
         private void Num8Handler()
         {
-            DisPlayTextUnder = AddCommon.Addcommon(addNum.Judgefornumber("8"));
-            DisPlayTextTop = Cache.topCache;
+            DisPlayBigText = AddCommon.Addcommon(addNum.Judgefornumber("8"));
+            DisPlayText = Cache.topCache;
 
         }
         private void Num9Handler()
         {
             if (Cache.judgeSinge)
             {
-                his.AddHistory(DisPlayTextTop + "=" + DisPlayTextUnder);
+                his.AddHistory(DisPlayText + "=" + DisPlayBigText);
                 History.Clear();
                 foreach (var item in his.GetHistory())
                 {
                     History.Insert(0, item);
                 }
             }
-            DisPlayTextUnder = AddCommon.Addcommon(addNum.Judgefornumber("9"));
-            DisPlayTextTop = Cache.topCache;
+            DisPlayBigText = AddCommon.Addcommon(addNum.Judgefornumber("9"));
+            DisPlayText = Cache.topCache;
 
         }
         private void Num0Handler()
         {
-            DisPlayTextUnder = AddCommon.Addcommon(addNum0.JudgeZero());
-            DisPlayTextTop = Cache.topCache;
+            DisPlayBigText = AddCommon.Addcommon(addNum0.JudgeZero());
+            DisPlayText = Cache.topCache;
         }
         private void PercentOneHandler()//%
         {
-            DisPlayTextTop = addSingle.JudgeForSinge("%");
-            DisPlayTextUnder = AddCommon.Addcommon(Cache.underCache);
+            DisPlayText = addSingle.JudgeForSinge("%");
+            DisPlayBigText = AddCommon.Addcommon(Cache.underCache);
         }
         private void SquareHandler()//平方
         {
-            DisPlayTextTop = addSingle.JudgeForSinge("x²");
-            DisPlayTextUnder = AddCommon.Addcommon(Cache.underCache);
+            DisPlayText = addSingle.JudgeForSinge("x²");
+            DisPlayBigText = AddCommon.Addcommon(Cache.underCache);
         }
         private void InverseHandler()//相反数
         {
-            DisPlayTextTop = addSingle.JudgeForSinge("±");
-            DisPlayTextUnder = AddCommon.Addcommon(Cache.underCache);
+            DisPlayText = addSingle.JudgeForSinge("±");
+            DisPlayBigText = AddCommon.Addcommon(Cache.underCache);
             Cache.judgeNewInp = false;
         }
         private void ReciprocalHandler()//倒数
         {
-            DisPlayTextTop = addSingle.JudgeForSinge("1/x");
+            DisPlayText = addSingle.JudgeForSinge("1/x");
             if ("除数不能为零".Equals(Cache.underCache))
             {
-                DisPlayTextUnder = Cache.underCache;
+                DisPlayBigText = Cache.underCache;
             }
             else
             {
-                DisPlayTextUnder = AddCommon.Addcommon(Cache.underCache);
+                DisPlayBigText = AddCommon.Addcommon(Cache.underCache);
             }
 
         }
         private void RadicalHandler()//根号
         {
-            DisPlayTextTop = addSingle.JudgeForSinge("√");
-            DisPlayTextUnder = AddCommon.Addcommon(Cache.underCache);
+            DisPlayText = addSingle.JudgeForSinge("√");
+            DisPlayBigText = AddCommon.Addcommon(Cache.underCache);
         }
 
         private void ClearAllHandler()
         {
             Cache.topCache = "";
             Cache.underCache = "";
-            DisPlayTextTop = "";
-            DisPlayTextUnder = "0";
+            DisPlayText = "";
+            DisPlayBigText = "0";
             Cache.operatorCacheOld = "";
             Cache.operatorCacheNew = "";
             Cache.resultCache = "";
@@ -421,7 +421,7 @@ namespace Cal_ViewModel
 
             if (Cache.judgeSinge)
             {
-                his.AddHistory(DisPlayTextTop + "=" + DisPlayTextUnder);
+                his.AddHistory(DisPlayText + "=" + DisPlayBigText);
                 History.Clear();
                 foreach (var item in his.GetHistory())
 
@@ -431,7 +431,7 @@ namespace Cal_ViewModel
                 }
 
             }
-            DisPlayTextUnder = "0";
+            DisPlayBigText = "0";
             Cache.underCache = "";
         }
         private void DelHandler()
@@ -439,24 +439,24 @@ namespace Cal_ViewModel
             if (Cache.underCache.Length > 1)
             {
                 Cache.underCache = Cache.underCache.Substring(0, Cache.underCache.Length - 1);
-                DisPlayTextUnder = AddCommon.Addcommon(Cache.underCache);
+                DisPlayBigText = AddCommon.Addcommon(Cache.underCache);
             }
             else
             {
                 Cache.underCache = "0";
-                DisPlayTextUnder = Cache.underCache;
+                DisPlayBigText = Cache.underCache;
                 Cache.underCache = "";
             }
 
         }
         private void DotHandler()
         {
-            DisPlayTextUnder = addDot.Judgefordot();
+            DisPlayBigText = addDot.Judgefordot();
         }
         private void EqualsHandler()
         {
 
-            DisPlayTextUnder = AddFormat.Addformat(eq.getResult());
+            DisPlayBigText = AddFormat.Addformat(eq.getResult());
             if ("".Equals(Cache.operatorCacheNew))
 
             {
@@ -485,7 +485,7 @@ namespace Cal_ViewModel
                     }
                     else
                     {
-                        his.AddHistory(DisPlayTextUnder + "=" + DisPlayTextUnder);
+                        his.AddHistory(DisPlayBigText + "=" + DisPlayBigText);
                         History.Clear();
                         foreach (var item in his.GetHistory())
                         {
@@ -498,7 +498,7 @@ namespace Cal_ViewModel
             }
             else
             {
-                if (!"".Equals(DisPlayTextTop))
+                if (!"".Equals(DisPlayText))
                 {
                     if (Cache.count > 1)
                     {
@@ -519,7 +519,7 @@ namespace Cal_ViewModel
                                     stri = (Convert.ToDecimal(Cache.resultCache) * Convert.ToDecimal(Cache.underCache)).ToString();
                                     break;
                             }
-                            his.AddHistory(Cache.topCache + stri + Cache.underCache + "=" + DisPlayTextUnder);
+                            his.AddHistory(Cache.topCache + stri + Cache.underCache + "=" + DisPlayBigText);
                             History.Clear();
                             foreach (var item in his.GetHistory())
                             {
@@ -528,7 +528,7 @@ namespace Cal_ViewModel
                         }
                         else
                         {
-                            his.AddHistory(Cache.topCache + "=" + DisPlayTextUnder);
+                            his.AddHistory(Cache.topCache + "=" + DisPlayBigText);
                             History.Clear();
                             foreach (var item in his.GetHistory())
                             {
@@ -542,7 +542,7 @@ namespace Cal_ViewModel
                     {
                         if (Cache.judgeTurn && Cache.judgeNewInp)
                         {
-                            his.AddHistory(DisPlayTextTop + "=" + DisPlayTextUnder);
+                            his.AddHistory(DisPlayText + "=" + DisPlayBigText);
                             History.Clear();
                             foreach (var item in his.GetHistory())
                             {
@@ -551,7 +551,7 @@ namespace Cal_ViewModel
                         }
                         else
                         {
-                            his.AddHistory(DisPlayTextTop + Cache.underCache + "=" + DisPlayTextUnder);
+                            his.AddHistory(DisPlayText + Cache.underCache + "=" + DisPlayBigText);
                             History.Clear();
                             foreach (var item in his.GetHistory())
                             {
@@ -580,7 +580,7 @@ namespace Cal_ViewModel
                             break;
                     }
 
-                    his.AddHistory(stri + Cache.operatorCacheNew + Cache.underCache + "=" + DisPlayTextUnder);
+                    his.AddHistory(stri + Cache.operatorCacheNew + Cache.underCache + "=" + DisPlayBigText);
                     History.Clear();
                     foreach (var item in his.GetHistory())
                     {
@@ -591,7 +591,7 @@ namespace Cal_ViewModel
 
             }
 
-            DisPlayTextTop = "";
+            DisPlayText = "";
             Cache.topCache = "";
             Cache.judgeEqual = true;
             Cache.judgeTurn = true;
@@ -614,7 +614,7 @@ namespace Cal_ViewModel
         private void MS()
         {
             //his.AddStorage();
-            mem.MSChange(DisPlayTextUnder);
+            mem.MSChange(DisPlayBigText);
             Memory.Clear();
             foreach (var item in mem.GetMemory())
 
@@ -637,11 +637,11 @@ namespace Cal_ViewModel
         }
         private void MR()
         {
-            DisPlayTextUnder = mem.GetMemory().Last();
+            DisPlayBigText = mem.GetMemory().Last();
         }
         private void MMinus()
         {
-            mem.MSMinus(DisPlayTextUnder);
+            mem.MSMinus(DisPlayBigText);
             Memory.Clear();
             foreach (var item in mem.GetMemory())
 
@@ -653,7 +653,7 @@ namespace Cal_ViewModel
         }
         private void MPlus()
         {
-            mem.MSPlus(DisPlayTextUnder);
+            mem.MSPlus(DisPlayBigText);
             Memory.Clear();
             foreach (var item in mem.GetMemory())
 
