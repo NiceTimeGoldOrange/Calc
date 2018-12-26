@@ -15,7 +15,7 @@ namespace Cal_ViewModel.OperatorModel
         {
             decimal num = decimal.Parse(i1) * decimal.Parse(i2);
 
-            return MyMath.MySqrt(num.ToString());
+            return MyMath.MyRouding(MyMath.MySqrt(num.ToString()));
         }
     }
 }

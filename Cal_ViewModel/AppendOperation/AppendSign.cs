@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Cal_ViewModel.ChangeFactory
 {/// <summary>
-/// 正负号运算
+/// 添加正负号，不改变数值的大小，只改变数值的正负
 /// </summary>
-    class ChangeSign
+    class AppendSign
     {
         public string GetStatus()
         {

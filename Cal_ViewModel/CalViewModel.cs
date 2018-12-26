@@ -1,36 +1,36 @@
 ﻿using System;
+using System.Text.RegularExpressions;
+using Infrastructure;
+using Cal_ViewModel.Operator;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using Microsoft.Web.Infrastructure;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Infrastructure;
-using System.Text.RegularExpressions;
 using MyMathTools;
 using Cal_ViewModel.OperatorModel;
-using Cal_ViewModel.Operator;
+using Cal_ViewModel.NumberFormat;
+using Cal_ViewModel.ChangeFactory;
+using History_Memory;
+using Cal_ViewModel.Format;
 
 namespace Cal_ViewModel
 {
     public class CalViewModel : NotifyObject
     {
-        private static List<string> list = new List<string>();
-
         IOperator add = new Addition();
         IOperator sub = new Subtract();
         IOperator mul = new Multiply();
         IOperator dev = new Devide();
         IOperator evo = new Evolution();
+
+        NumberOne2Nine appendNum = new NumberOne2Nine();
+        Zero num0 = new Zero();
+        Point point = new Point();
+        AppendOperator appendOpt = new AppendOperator();
+        AppendSingle appendSingle = new AppendSingle();
+        AppendSign appendSign = new AppendSign();
+        Memory memory = new Memory();
+        History his = new History();
+        Equals eq = new Equals();
 
         private static String _formDisPlay;
         public string FormDisPlay
@@ -82,7 +82,7 @@ namespace Cal_ViewModel
         private void ZeroHandler()
         {
             FormDisPlay = FormDisPlay + "0";
-            DisPlayBigText = TrisectionMethod(FormDisPlay);
+            DisPlayBigText = AppendComma.TrisectionMethod(FormDisPlay);
         }
 
         //绑定1
@@ -93,8 +93,8 @@ namespace Cal_ViewModel
         }
         private void OneHandler()
         {
-            FormDisPlay = FormDisPlay + "1";
-            DisPlayBigText = TrisectionMethod(FormDisPlay);
+            DisPlayText = AppendComma.TrisectionMethod(appendNum.JudgeNum("1"));
+            DisPlayBigText = Loading.topText;
         }
 
         //绑定2
@@ -105,8 +105,8 @@ namespace Cal_ViewModel
         }
         private void TwoHandler()
         {
-            FormDisPlay = FormDisPlay + "2";
-            DisPlayBigText = TrisectionMethod(FormDisPlay);
+            DisPlayText = Loading.topText;
+            DisPlayBigText = AppendComma.TrisectionMethod(appendNum.JudgeNum("2"));
         }
 
         //绑定3
@@ -117,8 +117,8 @@ namespace Cal_ViewModel
         }
         private void ThreeHandler()
         {
-            FormDisPlay = FormDisPlay + "3";
-            DisPlayBigText = TrisectionMethod(FormDisPlay);
+            DisPlayText = Loading.topText;
+            DisPlayBigText = AppendComma.TrisectionMethod(appendNum.JudgeNum("3"));
         }
 
         //绑定4
@@ -129,8 +129,8 @@ namespace Cal_ViewModel
         }
         private void FourHandler()
         {
-            FormDisPlay = FormDisPlay + "4";
-            DisPlayBigText = TrisectionMethod(FormDisPlay);
+            DisPlayBigText = AppendComma.TrisectionMethod(appendNum.JudgeNum("4"));
+            DisPlayText = Loading.topText;
         }
 
         //绑定5
@@ -141,8 +141,8 @@ namespace Cal_ViewModel
         }
         private void FiveHandler()
         {
-            FormDisPlay = FormDisPlay + "5";
-            DisPlayBigText = TrisectionMethod(FormDisPlay);
+            DisPlayBigText = AppendComma.TrisectionMethod(appendNum.JudgeNum("5"));
+            DisPlayText = Loading.topText;
         }
 
         //绑定6
@@ -153,8 +153,8 @@ namespace Cal_ViewModel
         }
         private void SixHandler()
         {
-            FormDisPlay = FormDisPlay + "6";
-            DisPlayBigText = TrisectionMethod(FormDisPlay);
+            DisPlayBigText = AppendComma.TrisectionMethod(appendNum.JudgeNum("6"));
+            DisPlayText = Loading.topText;
         }
 
         //绑定7
@@ -165,8 +165,8 @@ namespace Cal_ViewModel
         }
         private void SevenHandler()
         {
-            FormDisPlay = FormDisPlay + "7";
-            DisPlayBigText = TrisectionMethod(FormDisPlay);
+            DisPlayBigText = AppendComma.TrisectionMethod(appendNum.JudgeNum("7"));
+            DisPlayText = Loading.topText;
         }
 
         //绑定8
@@ -177,8 +177,8 @@ namespace Cal_ViewModel
         }
         private void EightHandler()
         {
-            FormDisPlay = FormDisPlay + "8";
-            DisPlayBigText = TrisectionMethod(FormDisPlay);
+            DisPlayBigText = AppendComma.TrisectionMethod(appendNum.JudgeNum("8"));
+            DisPlayText = Loading.topText;
         }
 
         //绑定9
@@ -189,8 +189,10 @@ namespace Cal_ViewModel
         }
         private void NineHandler()
         {
-            FormDisPlay = FormDisPlay + "9";
-            DisPlayBigText = TrisectionMethod(FormDisPlay);
+            if (Loading.isSingleOper)
+            {
+                his.AddHis(DisPlayText);
+            }
         }
 
         //绑定 .
@@ -199,214 +201,195 @@ namespace Cal_ViewModel
         {
             get => _pointCommand;
         }
+        private void PointHandler()
+        {
+            DisPlayBigText = point.IsPoint();
+            ////判断.是否出现过
+            //Boolean jd = true;
+            //foreach (char element in DisPlayBigText)
+            //{
+            //    if (element == '.')
+            //    {
+            //        jd = false;
+            //    }
+            //}
 
-        public static NVCommand PercentCommand { get => _percentCommand; set => _percentCommand = value; }
-        public static NVCommand InverseCommand { get => _inverseCommand; set => _inverseCommand = value; }
-        public static NVCommand DelCommand { get => _delCommand; set => _delCommand = value; }
-        public static NVCommand ClearAllCommand { get => _clearAllCommand; set => _clearAllCommand = value; }
-        public static NVCommand ClearPreCommand { get => _clearPreCommand; set => _clearPreCommand = value; }
-        public static NVCommand EqualsCommand { get => _equalsCommand; set => _equalsCommand = value; }
-        public static NVCommand Btn_ms { get => _btn_ms; set => _btn_ms = value; }
-        public static NVCommand Btn_mr { get => _btn_mr; set => _btn_mr = value; }
-        public static NVCommand Btn_minus { get => _btn_minus; set => _btn_minus = value; }
-        public static NVCommand Btn_plus { get => _btn_plus; set => _btn_plus = value; }
-        public static NVCommand Btn_clearHis { get => _btn_clearHis; set => _btn_clearHis = value; }
-        public static NVCommand SqareCommand { get => _sqareCommand; set => _sqareCommand = value; }
-        public static NVCommand SqrtCommand { get => _sqrtCommand; set => _sqrtCommand = value; }
-        public static List<string> HisCollection { get => _HisCollection; set => _HisCollection = value; }
-        public static List<string> MemCollection { get => _MemCollection; set => _MemCollection = value; }
+            //if (jd == true)
+            //{
+            //    FormDisPlay = FormDisPlay + ".";
+            //    DisPlayBigText = AppendComma.TrisectionMethod(FormDisPlay);
+            //}
+        }
 
-        // 0-9数字绑定、四则运算、小数点、逗号
+        // 加法
         private readonly NVCommand _addCommand;
         public NVCommand AddCommand
         {
             get => _addCommand;
         }
+        private void AddHandler()
+        {
+            DisPlayText = appendOpt.JudgeOperation("+");
+            DisPlayBigText = AppendFormat.Addformat(AppendComma.TrisectionMethod(Loading.belowText));
+        }
 
+        // 减法
         private readonly NVCommand _subtractCommand;
         public NVCommand SubtractCommand
         {
             get => _subtractCommand;
         }
+        private void SubtractHandler()
+        {
+            DisPlayText = appendOpt.JudgeOperation("-");
+            DisPlayBigText = AppendFormat.Addformat(AppendComma.TrisectionMethod(Loading.belowText));
+        }
 
+        // 乘法
         private readonly NVCommand _multiplyCommand;
         public NVCommand MultiplyCommand
         {
             get => _multiplyCommand;
         }
-
-        private readonly NVCommand _divideCommand;
-        public NVCommand DivideCommand
-        {
-            get => _divideCommand;
-        }
-
-        // 平方
-        private static NVCommand _sqareCommand;
-        // 开方
-        private static NVCommand _sqrtCommand;
-        // 百分比
-        private static NVCommand _percentCommand;
-        // 倒数
-        private static NVCommand _inverseCommand;
-        // 删除
-        private static NVCommand _delCommand;
-        // 清空
-        private static NVCommand _clearAllCommand;
-        // 清除上一个
-        private static NVCommand _clearPreCommand;
-        // 等于号
-        private static NVCommand _equalsCommand;
-        // MS
-        private static NVCommand _btn_ms;
-        // MR
-        private static NVCommand _btn_mr;
-        // 负号
-        private static NVCommand _btn_minus;
-        // 正号
-        private static NVCommand _btn_plus;
-        // 清除历史记录
-        private static NVCommand _btn_clearHis;
-        // 历史记录集合
-        private static List<string> _HisCollection = new List<string>();
-        // 内存集合
-        private static List<string> _MemCollection = new List<string>();
-
-        private void PointHandler()
-        {
-            //判断.是否出现过
-            Boolean jd = true;
-            foreach (char element in DisPlayBigText)
-            {
-                if (element == '.')
-                {
-                    jd = false;
-                }
-            }
-
-            if (jd == true)
-            {
-                FormDisPlay = FormDisPlay + ".";
-                DisPlayBigText = TrisectionMethod(FormDisPlay);
-            }
-        }
-
-        //三位分节法 ，添加逗号
-        private string TrisectionMethod(String str)
-        {
-            //带小数的正则表达式判断
-            if (str.Contains(".") == true)
-            {
-                str = Regex.Replace(str, @"\d+?(?=(?:\d{3})+\.)", "$0,");
-            }
-            else
-            {
-                str = str + ".01";
-                str = Regex.Replace(str, @"\d+?(?=(?:\d{3})+\.)", "$0,");
-                string[] sArray = str.Split('.');
-                str = sArray.ElementAt(0);
-            }
-            return str;
-        }
-
-        // 加法
-        private void AddHandler()
-        {
-            DisPlayText = FormDisPlay + "   +    ";
-            DisPlayBigText = "";
-        }
-
-        //减法
-        private void SubtractHandler()
-        {
-            DisPlayText = FormDisPlay + "   -    ";
-        }
-
-        // 乘法
         private void MultiplyHandler()
         {
-            DisPlayText = FormDisPlay + "  ×    ";
+            DisPlayText = appendOpt.JudgeOperation("×");
+            DisPlayBigText = AppendFormat.Addformat(AppendComma.TrisectionMethod(Loading.belowText));
         }
 
-        // 除法
+        //除法
+        private readonly NVCommand _divideCommand;
+        public NVCommand DivideCommand { get => _divideCommand; }
         private void DivideHandler()
         {
-            DisPlayText = FormDisPlay + "  ÷    ";
+            DisPlayText = appendOpt.JudgeOperation("÷");
+            DisPlayBigText = AppendFormat.Addformat(AppendComma.TrisectionMethod(Loading.belowText));
         }
 
-        //百分比
-        public void PercentHandler()
-        {
-
-        }
 
         // 平方
+        private readonly NVCommand _squareCommand;
+        public NVCommand SquareCommand { get => _squareCommand; }
         public void SqareHandler()
         {
+            DisPlayText = appendSingle.JudgeSingle("x²");
+            DisPlayBigText = AppendFormat.Addformat(AppendComma.TrisectionMethod(Loading.belowText));
+        }
 
+        // 开方
+        private readonly NVCommand _sqrtCommand;
+        public NVCommand SqrtCommand { get => _sqrtCommand; }
+        public void SqrtHandler()
+        {
+            DisPlayText = appendSingle.JudgeSingle("√");
+            DisPlayBigText = AppendFormat.Addformat(AppendComma.TrisectionMethod(Loading.belowText));
+        }
+
+        // 百分比
+        private readonly NVCommand _percentCommand;
+        public NVCommand PercentCommand { get => _percentCommand; }
+        public void PercentHandler()
+        {
+            DisPlayText = appendSingle.JudgeSingle("%");
+            DisPlayBigText = AppendFormat.Addformat(AppendComma.TrisectionMethod(Loading.belowText));
         }
 
         // 倒数
+        private readonly NVCommand _inverseCommand;
+        public NVCommand InverseCommand { get => _inverseCommand; }
         public void InverseHandler()
         {
-
+            DisPlayText = appendSingle.JudgeSingle("⅟x");
+            DisPlayBigText = AppendComma.TrisectionMethod(AppendFormat.Addformat(Loading.belowText));
         }
 
-        //清除所有
-        public void ClearAllHandler()
-        {
-
-        }
-
-        public void ClearPreHandler()
-        {
-
-        }
-
+        // 删除
+        private readonly NVCommand _delCommand;
+        public NVCommand DelCommand { get => _delCommand; }
         public void DelHandler()
         {
 
         }
 
+        // 清空
+        private readonly NVCommand _clearAllCommand;
+        public NVCommand ClearAllCommand { get => _clearAllCommand; }
+        public void ClearAllHandler()
+        {
+
+        }
+
+        // 清除上一个
+        private readonly NVCommand _clearPreCommand;
+        public NVCommand ClearPreCommand { get => _clearPreCommand; }
+        public void ClearPreHandler()
+        {
+
+        }
+
+        // 等于号
+        private readonly NVCommand _equalsCommand;
+        public NVCommand EqualsCommand { get => _equalsCommand; }
         public void EqualsHandler()
         {
 
         }
 
-        public void MS()
+        // MS
+        private readonly NVCommand _btn_ms;
+        public NVCommand Btn_ms { get => _btn_ms; }
+        public void MSHandler()
         {
 
         }
 
-        public void MR()
+        // MR
+        private readonly NVCommand _btn_mr;
+        public NVCommand Btn_mr { get => _btn_mr; }
+        public void MRHandler()
         {
 
         }
 
-        public void MC()
+        private readonly NVCommand _btn_mc;
+        public NVCommand Btn_mc { get => _btn_mc; }
+        public void MCHandler()
         {
 
         }
 
-        public void Minus()
+
+        // 负号
+        private readonly NVCommand _btn_minus;
+        public NVCommand Btn_minus { get => _btn_minus; }
+        public void MinusHandler()
         {
 
         }
 
-        public void Plus()
+        // 正号
+        private readonly NVCommand _btn_plus;
+        public NVCommand Btn_plus { get => _btn_plus; }
+        public void PlusHandler()
         {
 
         }
 
-        public void ClearHistory()
+        // 清除历史记录
+        private readonly NVCommand _btn_clearHis;
+        public NVCommand Btn_clearHis { get => _btn_clearHis; }
+        public void ClearHisHandler()
         {
 
         }
 
-        public void Sqrt()
-        {
-            DisPlayBigText = MyMath.MyRouding(MyMath.MySqrt(FormDisPlay));
-        }
+        // 历史记录集合
+        private readonly List<string> _HisCollection = new List<string>();
+        public List<string> HisCollection { get => _HisCollection; }
+
+        // 内存集合
+        private readonly List<string> _MemCollection = new List<string>();
+        public List<string> MemCollection { get => _MemCollection; }
 
         public CalViewModel()
         {
@@ -430,19 +413,19 @@ namespace Cal_ViewModel
             _pointCommand = new NVCommand(PointHandler);
 
             _percentCommand = new NVCommand(PercentHandler);
-            _sqareCommand = new NVCommand(SqareHandler);
+            _squareCommand = new NVCommand(SqareHandler);
             _inverseCommand = new NVCommand(InverseHandler);
             _clearAllCommand = new NVCommand(ClearAllHandler);
             _clearPreCommand = new NVCommand(ClearPreHandler);
             _equalsCommand = new NVCommand(EqualsHandler);
-            _btn_ms = new NVCommand(MS);
-            _btn_mr = new NVCommand(MR);
-            _btn_plus = new NVCommand(Plus);
-            _btn_clearHis = new NVCommand(ClearHistory);
-            _sqrtCommand = new NVCommand(Sqrt);
+            _btn_ms = new NVCommand(MSHandler);
+            _btn_mr = new NVCommand(MRHandler);
+            _btn_mc = new NVCommand(MCHandler);
+            _btn_plus = new NVCommand(PlusHandler);
+            _btn_clearHis = new NVCommand(ClearHisHandler);
+            _sqrtCommand = new NVCommand(SqrtHandler);
+            _btn_minus = new NVCommand(MinusHandler);
+            _delCommand = new NVCommand(DelHandler);
         }
     }
-
 }
-
-

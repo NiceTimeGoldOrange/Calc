@@ -8,7 +8,7 @@ namespace History_Memory
 {/// <summary>
 /// 对历史记录的操作
 /// </summary>
-    class History
+    public class History
     {
         public static List<string> his = new List<string>();
 

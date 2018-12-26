@@ -8,7 +8,7 @@ namespace History_Memory
 {/// <summary>
 /// 内存操作
 /// </summary>
-    class Memory
+    public class Memory
     {
         // 内存集合
         public static List<string> list = new List<string>();

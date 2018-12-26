@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Cal_ViewModel.Judge;
+using History_Memory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,9 +28,9 @@ namespace Cal_ViewModel.NumberFormat
             }
 
             // 顶部文本框不为空
-            if (CalViewModel.DisPlayText1 != "")
+            if (CalViewModel._disPlayText != "")
             {
-                if (CalViewModel.DisPlayText1.Last().ToString() == ")" || Loading.isSingleOper)
+                if (CalViewModel._disPlayText.Last().ToString() == ")" || Loading.isSingleOper)
                 {
                     if (Loading.lastOperator == "")
                     {

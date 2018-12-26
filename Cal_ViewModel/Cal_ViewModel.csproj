@@ -50,23 +50,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalViewModel.cs" />
-    <Compile Include="ChangeFactory\ChangeForOperator.cs" />
-    <Compile Include="ChangeFactory\ChangeSign.cs" />
-    <Compile Include="Equals.cs" />
-    <Compile Include="Judge\IJudegForSingle.cs" />
-    <Compile Include="Judge\IJudgeForNumber.cs" />
-    <Compile Include="Judge\IJudgeForOperation.cs" />
-    <Compile Include="Judge\IJudgeForZero.cs" />
+    <Compile Include="AppendOperation\AppendOperator.cs" />
+    <Compile Include="AppendOperation\AppendSign.cs" />
+    <Compile Include="AppendOperation\AppendSingle.cs" />
+    <Compile Include="Equals\Equals.cs" />
+    <Compile Include="Format\AppendComma.cs" />
+    <Compile Include="Format\AppendFormat.cs" />
+    <Compile Include="IJudge\IJudegForPoint.cs" />
+    <Compile Include="IJudge\IJudegForSingle.cs" />
+    <Compile Include="IJudge\IJudgeForNumber.cs" />
+    <Compile Include="IJudge\IJudgeForOperation.cs" />
+    <Compile Include="IJudge\IJudgeForZero.cs" />
     <Compile Include="NumberFormat\NumberOne2Nine.cs" />
     <Compile Include="NumberFormat\Point.cs" />
     <Compile Include="NumberFormat\Zero.cs" />
-    <Compile Include="OperatorModel\Addition.cs" />
-    <Compile Include="OperatorModel\Devide.cs" />
-    <Compile Include="OperatorModel\Evolution.cs" />
-    <Compile Include="OperatorModel\IOperation.cs" />
-    <Compile Include="OperatorModel\Multiply.cs" />
-    <Compile Include="OperatorModel\Percent.cs" />
-    <Compile Include="OperatorModel\Subtract.cs" />
+    <Compile Include="Operation\Monocular\Inverse.cs" />
+    <Compile Include="Operation\Monocular\Minus.cs" />
+    <Compile Include="Operation\Mul_View\Addition.cs" />
+    <Compile Include="Operation\Monocular\Cube.cs" />
+    <Compile Include="Operation\Mul_View\Devide.cs" />
+    <Compile Include="Operation\Monocular\Evolution.cs" />
+    <Compile Include="Operation\Mul_View\IOperation.cs" />
+    <Compile Include="Operation\Mul_View\Multiply.cs" />
+    <Compile Include="Operation\Monocular\Percent.cs" />
+    <Compile Include="Operation\Mul_View\Subtract.cs" />
+    <Compile Include="Operation\Monocular\Square.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
