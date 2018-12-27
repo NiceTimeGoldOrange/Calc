@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Cal_ViewModel.FormatModel
@@ -42,12 +43,28 @@ namespace Cal_ViewModel.FormatModel
                 CommaIndex(ref integer);
                 return integer;
             }
+            //带小数的正则表达式判断
+            //    if (underCache.Contains(".") == true)
+            //    {
+            //    underCache = Regex.Replace(underCache, @"\d+?(?=(?:\d{3})+\.)", "$0,");
+            //    }
+            //    else
+            //    {
 
+            //        underCache= underCache + ".01";
+            //       underCache  = Regex.Replace(underCache, @"\d+?(?=(?:\d{3})+\.)", "$0,");
+            //        string[] sArray = underCache .Split('.');
+            //        underCache = sArray.ElementAt(0);
+            //    }
+            //    integer = underCache;
+
+            //    return integer;
+            //}
 
 
 
         }
-        //AddComma方法的子部分，负责计算
+       // AddComma方法的子部分，负责计算
         private static void CommaIndex(ref string integer)
         {
             //整数部分3个以下不需要加逗号

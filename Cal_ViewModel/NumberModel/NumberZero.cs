@@ -111,7 +111,7 @@ namespace Cal_ViewModel.AddNumber
 
             }
 
-            return "";
+            return "0";
 
 
 
