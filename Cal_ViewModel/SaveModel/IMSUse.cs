@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cal_ViewModel.StoreModel
+namespace Cal_ViewModel.SaveModel
 {
-    interface IStore
+    interface IMSUse
     {
-        List<decimal> StoreMem(decimal i1);
+        void MSUse();
     }
 }

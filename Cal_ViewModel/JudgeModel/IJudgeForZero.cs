@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cal_ViewModel.ClearModel
+namespace Cal_ViewModel.JudgeModel
 {
-    interface IClear
+    interface IJudgeZero
     {
-        void ClearMem(List<decimal> list);
+        string JudgeZero();
     }
 }
