@@ -62,7 +62,7 @@
                 <Button Style="{StaticResource btnOther}" Command="{Binding ReciprocalCommand}">⅟x</Button>
                 <Button Style="{StaticResource btnOther}" Command="{Binding ClearPreCommand}">CE</Button>
                 <Button Style="{StaticResource btnOther}" Command="{Binding ClearAllCommand}">C</Button>
-                <Button Style="{StaticResource btnOther}" Visibility="Collapsed" Name="add">x³</Button>
+                <Button Style="{StaticResource btnOther}" Visibility="Collapsed" Name="add" Command="{Binding CubeCommand}">x³</Button>
                 <Button Style="{StaticResource btnOther}" FontFamily="Wingdings" Command="{Binding DelCommand}">Õ</Button>
                 <Button Style="{StaticResource btnChar}" Command="{Binding DivideCommand}">÷</Button>
                 <Button Style="{StaticResource btnNum}" Command="{Binding Num7Command}">7</Button>
