@@ -29,6 +29,10 @@ namespace Cal_ViewModel.FormatModel
             {
                 underCache = underCache.Substring(0, 16);
             }
+            else if(underCache.Contains("除数不能为零"))
+            {
+                return "除数不能为零";
+            }
 
             if (underCache.Contains("."))
             {
