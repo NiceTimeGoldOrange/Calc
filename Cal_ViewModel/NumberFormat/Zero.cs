@@ -1,4 +1,6 @@
-﻿using History_Memory;
+﻿using Cal_ViewModel.Format;
+using Cal_ViewModel.Judge;
+using History_Memory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +11,9 @@ namespace Cal_ViewModel.NumberFormat
 {/// <summary>
 /// 判定0
 /// </summary>
-    class Zero
+    class Zero : IJudgeForZero
     {
-        public string IsZero()
+        public string JudgeZero()
         {
             if (Loading.isEqual)
             {
@@ -53,7 +55,7 @@ namespace Cal_ViewModel.NumberFormat
             if (Loading.belowText == "")
             {
                 Loading.belowText = "0";
-                return Loading.belowText;
+                return AppendFormat.Addformat(Loading.belowText);
             }
 
             if (Loading.belowText != "0")

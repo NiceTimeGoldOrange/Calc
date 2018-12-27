@@ -13,52 +13,49 @@ namespace History_Memory
         // 内存集合
         public static List<string> list = new List<string>();
 
-        //内存加
-        public string MemAdd(string i1)
-        {
-            string result = "";
-            if (list.Count == 0)
-            {
-                list.Add(i1);
-            }
-            else
-            {
-                result = (decimal.Parse(i1) + decimal.Parse(list.Last())).ToString();
-            }
-            return result;
-        }
-
-        // 内存减
-        public string MemSub(string i1)
-        {
-            string result = "";
-            if (list.Count == 0)
-            {
-                list.Add(i1);
-            }
-            else
-            {
-                result = (decimal.Parse(i1) - decimal.Parse(list.Last())).ToString();
-            }
-            return result;
-        }
-
-        // 清空内存
-        public void MemClearAll()
-        {
-            list.Clear();
-
-        }
-
-        public void MemChange(string i1)
+        // 添加内存
+        public void MSChange(string i1)
         {
             list.Add(i1);
+            Loading.isNewNum = true;
         }
 
-        // 清空内存
-        public void MemClear()
+        public List<string> GetMemory()
+        {
+            return list;
+        }
+
+        public void MsClear()
         {
             list.Clear();
+        }
+
+        // 取反
+        public void MsMinus(string i1)
+        {
+            if (list.Count == 0)
+            {
+                list.Add(i1);
+            }
+            else
+            {
+                list[list.Count - 1] = (decimal.Parse(list.Last()) - decimal.Parse(i1)).ToString();
+            }
+            Loading.isNewNum = true;
+        }
+
+        //内存加
+        public void MemAdd(string i1)
+        {
+            if (list.Count == 0)
+            {
+                list.Add(i1);
+            }
+            else
+            {
+                list[list.Count - 1] = (decimal.Parse(i1) + decimal.Parse(list.Last())).ToString();
+            }
+            Loading.isNewNum = true;
         }
 
         public void MemUse()

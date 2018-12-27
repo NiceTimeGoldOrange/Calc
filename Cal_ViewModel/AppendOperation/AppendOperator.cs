@@ -23,9 +23,10 @@ namespace Cal_ViewModel.ChangeFactory
 
         public string JudgeOperation(string opt)
         {
+            // 输入新数值，改变状态
             Loading.isNewNum = true;
 
-            //执行过等于运算
+            //执行过等于运算，将结果赋给belowText
             if (Loading.isEqual)
             {
                 Loading.belowText = Loading.lastResult;
@@ -50,6 +51,7 @@ namespace Cal_ViewModel.ChangeFactory
                 if (Loading.isNewOperator)
                 {
                     Loading.isNewNum = false;
+                    // 单目运算
                     if (Loading.isSingleOper)
                     {
                         if (Loading.isEqual)
@@ -69,31 +71,35 @@ namespace Cal_ViewModel.ChangeFactory
                     //belowText没有结果
                     if (Loading.lastResult == "")
                     {
-                        Loading.lastResult = Loading.belowText;
+                        Loading.lastResult = AppendFormat.Addformat(Loading.belowText);
                     }
 
-                    if(Loading.lastOperator == "+")
+                    if (Loading.lastOperator == "+")
                     {
                         Loading.belowText = MyMath.MyRouding(add.GetResult(Loading.lastResult, Loading.belowText));
+                        Loading.lastResult = Loading.belowText;
                     }
                     else if (Loading.lastOperator == "-")
                     {
                         Loading.belowText = MyMath.MyRouding(sub.GetResult(Loading.lastResult, Loading.belowText));
+                        Loading.lastResult = Loading.belowText;
                     }
                     else if (Loading.lastOperator == "×")
                     {
                         Loading.belowText = MyMath.MyRouding(mul.GetResult(Loading.lastResult, Loading.belowText));
+                        Loading.lastResult = Loading.belowText;
                     }
                     else if (Loading.lastOperator == "÷")
                     {
                         Loading.belowText = MyMath.MyRouding(dev.GetResult(Loading.lastResult, Loading.belowText));
+                        Loading.lastResult = Loading.belowText;
                     }
                 }
                 // 不是新操作符
                 else
                 {
                     Loading.currentOperator = opt;
-                    Loading.topText = Loading.topText.Substring(0, Loading.topText.Length - 1 ) + opt;
+                    Loading.topText = Loading.topText.Substring(0, Loading.topText.Length - 1) + opt;
                 }
             }
             Loading.isEqual = false;

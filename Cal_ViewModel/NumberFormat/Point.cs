@@ -1,4 +1,5 @@
-﻿using History_Memory;
+﻿using Cal_ViewModel.IJudge;
+using History_Memory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Cal_ViewModel.NumberFormat
 {/// <summary>
 /// 小数点
 /// </summary>
-    class Point
+    class Point : IJudegForPoint
     {
         public string IsPoint()
         {
@@ -21,25 +22,21 @@ namespace Cal_ViewModel.NumberFormat
             }
 
             //下部文本框中为0
-            if (Loading.belowText == "0")
+            if (Loading.belowText.Contains("."))
             {
-                return "0." + Loading.belowText;
+                return Loading.belowText;
             }
-
-            // 不为0
             else
             {
-                // 包含小数点
-                if (Loading.belowText.Contains("."))
+                if (Loading.belowText == "")
                 {
-                    return Loading.belowText;
-
+                   Loading.belowText = "0." + Loading.belowText;
                 }
-                // 不含小数点
                 else
                 {
-                    return Loading.belowText + ".";
+                    Loading.belowText = Loading.belowText + ".";
                 }
+                return Loading.belowText;
             }
         }
     }

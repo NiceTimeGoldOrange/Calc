@@ -49,6 +49,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppendOperation\AppendSingle\MyCube.cs" />
+    <Compile Include="AppendOperation\AppendSingle\MyEvolution.cs" />
+    <Compile Include="AppendOperation\AppendSingle\MyInverse.cs" />
+    <Compile Include="AppendOperation\AppendSingle\MyMinus.cs" />
+    <Compile Include="AppendOperation\AppendSingle\MyPercnet.cs" />
+    <Compile Include="AppendOperation\AppendSingle\MySquare.cs" />
     <Compile Include="CalViewModel.cs" />
     <Compile Include="AppendOperation\AppendOperator.cs" />
     <Compile Include="AppendOperation\AppendSign.cs" />

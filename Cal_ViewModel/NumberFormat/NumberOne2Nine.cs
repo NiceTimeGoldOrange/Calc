@@ -38,14 +38,14 @@ namespace Cal_ViewModel.NumberFormat
                     }
                     else
                     {
-                        Loading.topText = Loading.topText.Substring(0, Loading.lastOperator.Length - 1);
+                        Loading.topText = Loading.topText.Substring(0, Loading.topText.LastIndexOf(Loading.currentOperator) + 1);
                     }
                     Loading.belowText = "0";
                 }
             }
 
             Loading.lastOperator = Loading.currentOperator;
-            Loading.isNewOperator = false;
+            Loading.isNewOperator = true;
             Loading.isSingleOper = false;
 
             if (Loading.isNewNum)

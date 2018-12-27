@@ -1,4 +1,5 @@
-﻿using Cal_ViewModel.Operator;
+﻿using Cal_ViewModel.Format;
+using Cal_ViewModel.Operator;
 using Cal_ViewModel.OperatorModel;
 using History_Memory;
 using MyMathTools;
@@ -36,41 +37,44 @@ namespace Cal_ViewModel
             else if (Loading.isNewNum && !Loading.isNewOperator)
             {
                 Loading.lastResult = CalViewModel._disPlayText;
-                switch (Loading.currentOperator)
+
+                if (Loading.currentOperator == "+")
                 {
-                    case "+":
-                        Loading.belowText = MyMath.MyRouding(add.GetResult(Loading.lastResult, Loading.belowText));
-                        break;
-                    case "-":
-                        Loading.belowText = MyMath.MyRouding(sub.GetResult(Loading.lastResult, Loading.belowText));
-                        break;
-                    case "×":
-                        Loading.belowText = MyMath.MyRouding(mul.GetResult(Loading.lastResult, Loading.belowText));
-                        break;
-                    case "÷":
-                        Loading.belowText = MyMath.MyRouding(dev.GetResult(Loading.lastResult, Loading.belowText));
-                        break;
+                    Loading.belowText = MyMath.MyRouding(add.GetResult(Loading.lastResult, Loading.belowText));
+                }
+                else if (Loading.currentOperator == "-")
+                {
+                    Loading.belowText = MyMath.MyRouding(sub.GetResult(Loading.lastResult, Loading.belowText));
+                }
+                else if (Loading.currentOperator == "×")
+                {
+                    Loading.belowText = MyMath.MyRouding(mul.GetResult(Loading.lastResult, Loading.belowText));
+                }
+                else if (Loading.currentOperator == "÷")
+                {
+                    Loading.belowText = MyMath.MyRouding(dev.GetResult(Loading.lastResult, Loading.belowText));
                 }
             }
             else
             {
-                switch (Loading.lastOperator)
+                if (Loading.currentOperator == "+")
                 {
-                    case "+":
-                        Loading.belowText = MyMath.MyRouding(add.GetResult(Loading.lastResult, Loading.belowText));
-                        break;
-                    case "-":
-                        Loading.belowText = MyMath.MyRouding(sub.GetResult(Loading.lastResult, Loading.belowText));
-                        break;
-                    case "×":
-                        Loading.belowText = MyMath.MyRouding(mul.GetResult(Loading.lastResult, Loading.belowText));
-                        break;
-                    case "÷":
-                        Loading.belowText = MyMath.MyRouding(dev.GetResult(Loading.lastResult, Loading.belowText));
-                        break;
+                    Loading.belowText = MyMath.MyRouding(add.GetResult(Loading.lastResult, Loading.belowText));
+                }
+                else if (Loading.currentOperator == "-")
+                {
+                    Loading.belowText = MyMath.MyRouding(sub.GetResult(Loading.lastResult, Loading.belowText));
+                }
+                else if (Loading.currentOperator == "×")
+                {
+                    Loading.belowText = MyMath.MyRouding(mul.GetResult(Loading.lastResult, Loading.belowText));
+                }
+                else if (Loading.currentOperator == "÷")
+                {
+                    Loading.belowText = MyMath.MyRouding(dev.GetResult(Loading.lastResult, Loading.belowText));
                 }
             }
-            return Loading.belowText;
+            return AppendComma.TrisectionMethod(Loading.lastResult);
         }
     }
 }

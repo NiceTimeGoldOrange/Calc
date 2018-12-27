@@ -10,6 +10,6 @@ namespace Cal_ViewModel.Judge
 /// </summary>
     interface IJudgeForZero
     {
-        string JudgeZero(string zero);
+        string JudgeZero();
     }
 }

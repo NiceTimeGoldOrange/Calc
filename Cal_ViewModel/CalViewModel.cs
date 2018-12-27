@@ -22,12 +22,12 @@ namespace Cal_ViewModel
         IOperator dev = new Devide();
         IOperator evo = new Evolution();
 
-        NumberOne2Nine appendNum = new NumberOne2Nine();
-        Zero num0 = new Zero();
-        Point point = new Point();
-        AppendOperator appendOpt = new AppendOperator();
-        AppendSingle appendSingle = new AppendSingle();
-        AppendSign appendSign = new AppendSign();
+        NumberOne2Nine appendNum = new NumberOne2Nine(); // 数字1-9
+        Zero num0 = new Zero(); // 数字0
+        Point point = new Point(); // 小数点
+        AppendOperator appendOpt = new AppendOperator(); //  运算符
+        AppendSign appendSign = new AppendSign(); // 正负号
+        AppendSingle appendSingle = new AppendSingle();      
         Memory memory = new Memory();
         History his = new History();
         Equals eq = new Equals();

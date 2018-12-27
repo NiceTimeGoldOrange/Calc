@@ -8,6 +8,6 @@ namespace Cal_ViewModel.IJudge
 {
     interface IJudegForPoint
     {
-        string JudgeForPoint(string i1);
+        string IsPoint();
     }
 }

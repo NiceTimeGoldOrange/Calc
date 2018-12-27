@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cal_ViewModel.ChangeFactory
 {/// <summary>
-/// 添加正负号，不改变数值的大小，只改变数值的正负
+/// 添加正负号，不改变数值的 值，只改变数值的正负
 /// </summary>
     class AppendSign
     {
