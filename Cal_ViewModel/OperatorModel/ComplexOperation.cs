@@ -30,7 +30,7 @@ namespace Cal_ViewModel.OperatorModel
         }
         public string Cube(string num1)
         {
-            return (Convert.ToDecimal(num1) * Convert.ToDecimal(num1) * Convert.ToDecimal(num1)).ToString();
+            return (Convert.ToDouble(num1) * Convert.ToDouble(num1) * Convert.ToDouble(num1)).ToString();
         }
         public string OneCent(string num1)
         {

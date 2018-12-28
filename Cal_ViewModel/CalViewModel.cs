@@ -161,7 +161,7 @@ namespace Cal_ViewModel
         private readonly NVCommand _cubeCommand;
         public NVCommand CubeCommand                  //平方
         {
-            get => CubeCommand;
+            get => _cubeCommand;
         }
 
         private readonly NVCommand _inverseCommand;
