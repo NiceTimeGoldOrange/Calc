@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="CalculatorPro.MemControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CalculatorPro"
+             mc:Ignorable="d" 
+             Height="69.3" Width="260">
+    
+        <Grid Name="TemplateGrid" Style="{StaticResource MemGrid}" >
+            <Grid.RowDefinitions>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox Style="{StaticResource txtMem}" Grid.Row="0" HorizontalContentAlignment="Right" BorderThickness="0" Margin="0,0,30,0" FontSize="20" FontFamily="Yu Gothic UI Semibold" Name="txtMem"></TextBox>
+            <DockPanel Grid.Row="1" LastChildFill="False">
+                <Button  DockPanel.Dock="Right" Style="{StaticResource MemControl}" Margin="0,0,30,0"/>
+                <Button  DockPanel.Dock="Right" Style="{StaticResource MemControl}"/>
+                <Button  DockPanel.Dock="Right" Style="{StaticResource MemControl}"/>
+            </DockPanel>
+        </Grid>
+        
+
+</UserControl>

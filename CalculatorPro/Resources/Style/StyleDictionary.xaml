@@ -341,4 +341,29 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="MemControl" TargetType="Button">
+        <Setter Property="Width" Value="36.675"></Setter>
+        <Setter Property="Height" Value="28.5"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Margin" Value="0,0,3,0"></Setter>
+        <Setter Property="Visibility" Value="Hidden"></Setter>
+    </Style>
+    <Style x:Key="MemGrid" TargetType="Grid">
+        <Setter Property="Background" Value="#e6e6e6"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#d2d2d2"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="txtMem" TargetType="TextBox">
+        <Setter Property="Background" Value="#e6e6e6"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#d2d2d2"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>
