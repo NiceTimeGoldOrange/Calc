@@ -42,15 +42,15 @@
             <TextBox Style="{StaticResource txtSmallBox}" Text="{Binding DisPlayText}"></TextBox>
         </Border>
         <Border Grid.Row="3">
-            <TextBox  Style="{StaticResource txtBigBox}" Text="{Binding DisPlayBigText}" TextChanged="TextBox_TextChanged" Name="txtBox" Margin="5,0,5,0"></TextBox>
+            <TextBox  Style="{StaticResource txtBigBox}" Text="{Binding DisPlayBigText}" ></TextBox>
         </Border>
         <Grid Grid.Row="4" x:Name="GridMem" >
             <UniformGrid Rows="1" Columns="6" Name="uniformMem">
-                <Button  Style="{StaticResource btnMem}" Name="btnMc" IsEnabled="False" Opacity="0.2" Command="{Binding Btn_mc}">MC</Button>
-                <Button  Style="{StaticResource btnMem}" Name="btnMr"  IsEnabled="False" Opacity="0.2"  Command="{Binding Btn_mr}">MR</Button>
+                <Button  Style="{StaticResource btnMem}" IsEnabled="False" Opacity="0.2" Command="{Binding Btn_mc}">MC</Button>
+                <Button  Style="{StaticResource btnMem}" IsEnabled="False" Opacity="0.2"  Command="{Binding Btn_mr}">MR</Button>
                 <Button  Style="{StaticResource btnMem}" Command="{Binding Btn_plus}">M+</Button>
                 <Button  Style="{StaticResource btnMem}" Command="{Binding Btn_minus}" >M-</Button>
-                <Button  Style="{StaticResource btnMem}" Command="{Binding Btn_ms}" Click="MS_Click">MS</Button>
+                <Button  Style="{StaticResource btnMem}" Command="{Binding Btn_ms}" >MS</Button>
                 <Button  Style="{StaticResource btnMem}" Name="btnM" Click="MemDisplay_Click" IsEnabled="False" Opacity="0.2">M▾</Button>
             </UniformGrid>
         </Grid>
@@ -62,6 +62,7 @@
                 <Button Style="{StaticResource btnOther}" Command="{Binding ReciprocalCommand}">⅟x</Button>
                 <Button Style="{StaticResource btnOther}" Command="{Binding ClearPreCommand}">CE</Button>
                 <Button Style="{StaticResource btnOther}" Command="{Binding ClearAllCommand}">C</Button>
+                <Button Style="{StaticResource btnOther}" Visibility="Collapsed" Name="add">x³</Button>
                 <Button Style="{StaticResource btnOther}" FontFamily="Wingdings" Command="{Binding DelCommand}">Õ</Button>
                 <Button Style="{StaticResource btnChar}" Command="{Binding DivideCommand}">÷</Button>
                 <Button Style="{StaticResource btnNum}" Command="{Binding Num7Command}">7</Button>
@@ -79,7 +80,8 @@
                 <Button Style="{StaticResource btnOther}" FontSize="22" FontWeight="Light" Command="{Binding InverseCommand}">±</Button>
                 <Button Style="{StaticResource btnNum}" Command="{Binding Num0Command}">0</Button>
                 <Button Style="{StaticResource btnOther}" Command="{Binding DotCommand}" FontWeight="DemiBold">.</Button>
-                <Button Style="{StaticResource btnChar}" Command="{Binding EqualsCommand}" Click="Equals_Click">=</Button>
+                <Button Style="{StaticResource btnChar}" Command="{Binding EqualsCommand}" >=</Button>
+                
             </UniformGrid>
         </Grid>
     </Grid>

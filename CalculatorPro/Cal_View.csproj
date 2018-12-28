@@ -71,12 +71,6 @@
     <Compile Include="HisFlyout.xaml.cs">
       <DependentUpon>HisFlyout.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MaxUniform.xaml.cs">
-      <DependentUpon>MaxUniform.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MemControl.xaml.cs">
-      <DependentUpon>MemControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MemFlyout.xaml.cs">
       <DependentUpon>MemFlyout.xaml</DependentUpon>
     </Compile>
@@ -121,14 +115,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MaxUniform.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MemControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MemFlyout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

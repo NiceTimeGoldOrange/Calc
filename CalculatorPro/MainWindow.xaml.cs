@@ -65,37 +65,34 @@ namespace CalculatorPro
 
             }
         }
-        MaxUniform mu = new MaxUniform();
         private void Max_Click(object sender, RoutedEventArgs e)
         {
             if (this.WindowState == WindowState.Maximized)
             {   //窗口还原
                 this.WindowState = WindowState.Normal;
                 this.Max.Content = "☐";
-                OutGrid.Children.Remove(mu);
-                uniformNum.Visibility = Visibility.Visible;
-                
+                uniformNum.Rows = 6;
+                uniformNum.Columns = 4;
+                add.Visibility = Visibility.Collapsed;
             }
             else
             {   //窗口最大化
                 this.WindowState = WindowState.Maximized;
                 this.Max.Content = "❐";
-                uniformNum.Visibility = Visibility.Collapsed;
-                OutGrid.Children.Add(mu);
-                
+                uniformNum.Rows = 5;
+                uniformNum.Columns = 5;
+                add.Visibility = Visibility.Visible;
             }
         }
         private void Min_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
-            
         }
 
 
         HisAndMemDis ham = new HisAndMemDis();
         ColumnDefinition col = new ColumnDefinition();
         bool flag = false;
-        
         private void MainWindow_Resize(object sender, System.EventArgs e)
         { 
             
@@ -113,7 +110,7 @@ namespace CalculatorPro
                 //col.MinWidth = 248.6;
                 //col.MaxWidth = 330;
                 btnM.Visibility = Visibility.Hidden;
-                btnHis.Visibility = Visibility.Collapsed; 
+                btnHis.Visibility = Visibility.Collapsed;
                 flag = true;
                 uniformMem.Columns = 5;
             }
@@ -126,47 +123,10 @@ namespace CalculatorPro
                 uniformMem.Columns = 6;
                 flag = false;
             }
-            
 
         }
-        int i = 0;
-        private void MS_Click(object sender, RoutedEventArgs e)
-        {
-            i += 1;
-            btnMc.Opacity = 1;
-            btnMc.IsEnabled = true;
-            btnM.Opacity = 1;
-            btnM.IsEnabled = true;
-            btnMr.Opacity = 1;
-            btnMr.IsEnabled = true;
-            MemControl mc = new MemControl();
-            mc.Margin = new Thickness(-5);
-            mc.txtMem.Text = txtBox.Text;
-            if (i == 1)
-            {
-                ham.lstBoxMem.Items.RemoveAt(0);
-            }
-            ham.lstBoxMem.Items.Insert(0, mc);
-            
-            
-         }
-        //字体效果
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            string str = txtBox.GetLineText(0);
-            if (str.Length > 13 && str.Length<21)
-            {
-                txtBox.FontSize -= 3;
-            }else if (str.Length <= 13)
-            {
-                txtBox.FontSize = 45;
-            }
-            
-        }
 
-        private void Equals_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
+
     }
 }
