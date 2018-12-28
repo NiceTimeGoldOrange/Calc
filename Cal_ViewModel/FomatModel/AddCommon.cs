@@ -9,6 +9,22 @@ namespace Cal_ViewModel.FormatModel
 {
     static class AddCommon
     {
+        //public static string Addcommon(string underCache)
+        //{   //带小数的正则表达式判断
+        //    if (underCache.Contains(".") == true)
+        //    {
+        //        underCache = Regex.Replace(underCache, @"\d+?(?=(?:\d{3})+\.)", "$0,");
+        //    }
+        //    else
+        //    {
+        //        underCache = underCache + ".01";
+        //        underCache = Regex.Replace(underCache, @"\d+?(?=(?:\d{3})+\.)", "$0,");
+        //        string[] sArray = underCache.Split('.');
+        //        underCache = sArray.ElementAt(0);
+        //    }
+
+        //    return underCache;
+        //}
         //为整数部分添加逗号
         public static string Addcommon(string underCache)
         {
@@ -29,7 +45,7 @@ namespace Cal_ViewModel.FormatModel
             {
                 underCache = underCache.Substring(0, 16);
             }
-            else if(underCache.Contains("除数不能为零"))
+            else if (underCache.Contains("除数不能为零"))
             {
                 return "除数不能为零";
             }
@@ -47,33 +63,17 @@ namespace Cal_ViewModel.FormatModel
                 CommaIndex(ref integer);
                 return integer;
             }
-            //带小数的正则表达式判断
-            //    if (underCache.Contains(".") == true)
-            //    {
-            //    underCache = Regex.Replace(underCache, @"\d+?(?=(?:\d{3})+\.)", "$0,");
-            //    }
-            //    else
-            //    {
-
-            //        underCache= underCache + ".01";
-            //       underCache  = Regex.Replace(underCache, @"\d+?(?=(?:\d{3})+\.)", "$0,");
-            //        string[] sArray = underCache .Split('.');
-            //        underCache = sArray.ElementAt(0);
-            //    }
-            //    integer = underCache;
-
-            //    return integer;
-            //}
 
 
 
         }
-       // AddComma方法的子部分，负责计算
+        // AddComma方法的子部分，负责计算
         private static void CommaIndex(ref string integer)
         {
             //整数部分3个以下不需要加逗号
             if (integer.Length <= 3)
-                return;
+            { return; }
+
             if (integer.Contains("-"))
             {
                 integer = integer.Substring(1, integer.Length - 1);
@@ -125,3 +125,6 @@ namespace Cal_ViewModel.FormatModel
         }
     }
 }
+   
+
+
