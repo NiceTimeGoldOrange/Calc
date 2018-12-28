@@ -158,6 +158,11 @@ namespace Cal_ViewModel
         {
             get => _squareCommand;
         }
+        private readonly NVCommand _cubeCommand;
+        public NVCommand CubeCommand                  //平方
+        {
+            get => _cubeCommand;
+        }
 
         private readonly NVCommand _inverseCommand;
         public NVCommand InverseCommand               //加减号 
@@ -263,6 +268,7 @@ namespace Cal_ViewModel
             _delCommand = new NVCommand(DelHandler);
             _equalsCommand = new NVCommand(EqualsHandler);
             _dotCommand = new NVCommand(DotHandler);
+            _cubeCommand = new NVCommand(CubeHandler);
             btn_ms = new NVCommand(MS);
             btn_mc = new NVCommand(MC);
             btn_mr = new NVCommand(MR);
@@ -373,6 +379,11 @@ namespace Cal_ViewModel
         private void SquareHandler()//平方
         {
             DisPlayText = addSingle.JudgeForSinge("x²");
+            DisPlayBigText = AddCommon.Addcommon(Cache.underCache);
+        }
+        private void CubeHandler()//平方
+        {
+            DisPlayText = addSingle.JudgeForSinge("x³");
             DisPlayBigText = AddCommon.Addcommon(Cache.underCache);
         }
         private void InverseHandler()//相反数
