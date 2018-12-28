@@ -65,38 +65,41 @@ namespace CalculatorPro
 
             }
         }
+        MaxUniform mu = new MaxUniform();
         private void Max_Click(object sender, RoutedEventArgs e)
         {
             if (this.WindowState == WindowState.Maximized)
             {   //窗口还原
                 this.WindowState = WindowState.Normal;
                 this.Max.Content = "☐";
-                uniformNum.Rows = 6;
-                uniformNum.Columns = 4;
-                add.Visibility = Visibility.Collapsed;
+                OutGrid.Children.Remove(mu);
+                uniformNum.Visibility = Visibility.Visible;
+
             }
             else
             {   //窗口最大化
                 this.WindowState = WindowState.Maximized;
                 this.Max.Content = "❐";
-                uniformNum.Rows = 5;
-                uniformNum.Columns = 5;
-                add.Visibility = Visibility.Visible;
+                uniformNum.Visibility = Visibility.Collapsed;
+                OutGrid.Children.Add(mu);
+
             }
         }
         private void Min_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+
         }
 
 
         HisAndMemDis ham = new HisAndMemDis();
         ColumnDefinition col = new ColumnDefinition();
         bool flag = false;
+
         private void MainWindow_Resize(object sender, System.EventArgs e)
-        { 
-            
-            if ( Window.ActualWidth > 563 && !flag)
+        {
+
+            if (Window.ActualWidth > 563 && !flag)
             {
                 //添加新定义的一行
                 AllGrid.ColumnDefinitions.Add(col);
@@ -114,7 +117,7 @@ namespace CalculatorPro
                 flag = true;
                 uniformMem.Columns = 5;
             }
-            if ( flag && Window.ActualWidth < 563)
+            if (flag && Window.ActualWidth < 563)
             {
                 AllGrid.ColumnDefinitions.RemoveAt(2);
                 AllGrid.Children.Remove(ham);
@@ -124,9 +127,48 @@ namespace CalculatorPro
                 flag = false;
             }
 
+
+        }
+        int i = 0;
+        private void MS_Click(object sender, RoutedEventArgs e)
+        {
+            i += 1;
+            btnMc.Opacity = 1;
+            btnMc.IsEnabled = true;
+            btnM.Opacity = 1;
+            btnM.IsEnabled = true;
+            btnMr.Opacity = 1;
+            btnMr.IsEnabled = true;
+            MemControl mc = new MemControl();
+            mc.Margin = new Thickness(-5);
+            mc.txtMem.Text = txtBox.Text;
+            if (i == 1)
+            {
+                ham.lstBoxMem.Items.RemoveAt(0);
+            }
+            ham.lstBoxMem.Items.Insert(0, mc);
+
+
+        }
+        //字体效果
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string str = txtBox.GetLineText(0);
+            if (str.Length > 13 && str.Length < 21)
+            {
+                txtBox.FontSize -= 3;
+            }
+            else if (str.Length <= 13)
+            {
+                txtBox.FontSize = 45;
+            }
+
         }
 
+        private void Equals_Click(object sender, RoutedEventArgs e)
+        {
 
-
+        }
     }
 }
+
