@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CalculatorPro"
              mc:Ignorable="d" 
-             MinHeight="501" MinWidth="248.6" MaxWidth="330" Background="#e6e6e6">
-    <Grid>
+             MinHeight="501" MinWidth="240" MaxWidth="330" Background="#e6e6e6">
+    <Grid Name="HisAndMemGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="49"/>
             <RowDefinition Height="419*"/>
@@ -28,8 +28,9 @@
             </ListBox>
         </Border>
         <Border Grid.Row="1" Name="lstMem" Visibility="Collapsed" >
-            <ListBox Background="#e6e6e6" Margin="0,20"  >
-                <ListBoxItem Style="{StaticResource lstItemMemDefault}" Name="memDefalut">内存中没有内容</ListBoxItem>
+            <ListBox Background="#e6e6e6" Margin="0,20"  Name="lstBoxMem" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                <ListBoxItem Style="{StaticResource lstItemMemDefault}" Name="MemDefalut">内存中没有内容</ListBoxItem>
+
             </ListBox>
         </Border>
         <DockPanel Grid.Row="2">
