@@ -6,16 +6,16 @@
              xmlns:local="clr-namespace:CalculatorPro"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Name="TemplateGrid" Style="{StaticResource MemGrid}" >
+    <Grid Name="TemplateGrid" Style="{StaticResource MemGrid}" MouseEnter="TemplateGrid_MouseEnter" MouseLeave="TemplateGrid_MouseLeave" >
         <Grid.RowDefinitions>
             <RowDefinition ></RowDefinition>
             <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBox Style="{StaticResource txtMem}" Grid.Row="0" HorizontalContentAlignment="Right" BorderThickness="0" Margin="0,0,30,0" FontSize="20" FontFamily="Yu Gothic UI Semibold" Name="txtMem"></TextBox>
-        <DockPanel Grid.Row="1" LastChildFill="False">
-            <Button  DockPanel.Dock="Right" Style="{StaticResource MemControl}" Margin="0,0,30,0"/>
-            <Button  DockPanel.Dock="Right" Style="{StaticResource MemControl}"/>
-            <Button  DockPanel.Dock="Right" Style="{StaticResource MemControl}"/>
+        <TextBox  Background="{Binding ElementName=TemplateGrid, Path=Background}" Grid.Row="0" HorizontalContentAlignment="Right" BorderThickness="0" Margin="0,0,30,0" FontSize="25" FontFamily="Yu Gothic UI Semibold" Name="txtMem" IsReadOnly="True" ></TextBox>
+        <DockPanel Grid.Row="1" LastChildFill="False" Visibility="Hidden" Name="btnDock">
+            <Button  DockPanel.Dock="Right" Style="{StaticResource MemControl}" Margin="0,0,30,15" Content="M-"/>
+            <Button  DockPanel.Dock="Right" Style="{StaticResource MemControl}" Content="M+"/>
+            <Button  DockPanel.Dock="Right" Style="{StaticResource MemControl}" Content="MC"/>
         </DockPanel>
     </Grid>
 </UserControl>

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CalculatorPro"
              mc:Ignorable="d" 
-             MinHeight="501" MinWidth="240" MaxWidth="330" Background="#e6e6e6">
+             Height="460" MinWidth="240" MaxWidth="330" Background="#e6e6e6">
     <Grid Name="HisAndMemGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="49"/>
@@ -22,20 +22,25 @@
                 <Image Source="Resources\Img\Mem.png"  Width="30" Margin="2,13,2,-13" Visibility="Hidden" Name="ImgMem"/>
             </Grid>
         </DockPanel>
-        <Border Grid.Row="1" Name="lstHis" Visibility="Visible"  >
-            <ListBox Background="#e6e6e6" Margin="0,20"  >
-                <ListBoxItem Style="{StaticResource lstItemHisDefault}" Name="HisDefalut">尚无历史记录</ListBoxItem>
+        <Grid  Grid.Row="1" Name="lstHis" Visibility="Visible">
+            <Label FontSize="15" FontWeight="Black" FontFamily="微软雅黑" Name="lblHis">尚无历史记录</Label>
+        <Border >
+            <ListBox Background="#e6e6e6" Margin="0,26,0,0" >
             </ListBox>
         </Border>
-        <Border Grid.Row="1" Name="lstMem" Visibility="Collapsed" >
-            <ListBox Background="#e6e6e6" Margin="0,20"  Name="lstBoxMem" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
-                <ListBoxItem Style="{StaticResource lstItemMemDefault}" Name="MemDefalut">内存中没有内容</ListBoxItem>
-
-            </ListBox>
-        </Border>
+        </Grid>
+        <Grid Grid.Row="1" Name="lstMem" Visibility="Collapsed" >
+            <Label FontSize="15" FontWeight="Black" FontFamily="微软雅黑" Name="lblMem">内存中没有内容</Label>
+            <Border>
+                <ListBox ItemContainerStyle="{StaticResource MemoryListItemStyle}" Background="#e6e6e6"   Name="lstBoxMem" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ItemsSource="{Binding Memory}" Margin="0,26,0,0"  >
+                </ListBox>
+            </Border>
+        </Grid>
         <DockPanel Grid.Row="2">
-            <Button  DockPanel.Dock="Left" Width="40.75" Height="40.75" HorizontalAlignment="Right" Background="#e6e6e6" BorderThickness="0">清空</Button>
+            <Button  DockPanel.Dock="Left" Width="40.75" Height="40.75" HorizontalAlignment="Right" Background="#e6e6e6" BorderThickness="0" Name="btnDel" Visibility="Hidden">
+                <Image Source="Resources\Img\delete.png"></Image>
+            </Button>
         </DockPanel>
-
+    
     </Grid>
 </UserControl>

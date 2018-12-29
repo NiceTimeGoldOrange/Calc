@@ -133,6 +133,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Style\MemAndHisDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Style\StyleDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,6 +198,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Img\ImgClock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\Calculator.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

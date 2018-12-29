@@ -24,5 +24,15 @@ namespace CalculatorPro
         {
             InitializeComponent();
         }
+
+        private void TemplateGrid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            btnDock.Visibility = Visibility.Visible;
+        }
+
+        private void TemplateGrid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            btnDock.Visibility = Visibility.Hidden;
+        }
     }
 }

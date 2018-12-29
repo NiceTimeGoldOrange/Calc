@@ -9,6 +9,8 @@
         xmlns:local="clr-namespace:CalculatorPro"
         mc:Ignorable="d"
         x:Name="Window"
+        Icon="Resources\Img\Calculator.ico"
+        
         Height="501" Width="321.5" MinHeight="501" MinWidth="321.5" WindowStyle="None" ShowTitleBar="False" ShowMaxRestoreButton="False" ShowCloseButton="False" ShowMinButton="False" BorderBrush="Black">
     <Grid  Background="#e6e6e6" Name="AllGrid" >
         <Grid.RowDefinitions>
@@ -58,7 +60,7 @@
         <Grid Grid.Row="5"  x:Name="OutGrid">
             <UniformGrid Rows="6" Columns="4" Name="uniformNum" Margin="3,0,3,0">
                 <Button Style="{StaticResource btnOther}" Command="{Binding PercentOneCommand}" >%</Button>
-                <Button Style="{StaticResource btnOther}"  Command="{Binding RadicalCommand}" FontFamily="Segoe UI Symbol" >√</Button>
+                <Button Style="{StaticResource btnOther}" Command="{Binding RadicalCommand}" FontFamily="Segoe UI Symbol" >√</Button>
                 <Button Style="{StaticResource btnOther}" Command="{Binding SquareCommand}">x²</Button>
                 <Button Style="{StaticResource btnOther}" Command="{Binding ReciprocalCommand}">⅟x</Button>
                 <Button Style="{StaticResource btnOther}" Command="{Binding ClearPreCommand}">CE</Button>
@@ -83,6 +85,7 @@
                 <Button Style="{StaticResource btnChar}" Command="{Binding EqualsCommand}" Click="Equals_Click">=</Button>
             </UniformGrid>
         </Grid>
+        
     </Grid>
     <metro:MetroWindow.Flyouts>
         <metro:FlyoutsControl >

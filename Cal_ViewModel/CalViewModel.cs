@@ -647,7 +647,7 @@ namespace Cal_ViewModel
             Cache.count = 0;
 
         }
-        private ObservableCollection<string> _memory = new ObservableCollection<string> { "内存中没有内容                                       " };
+        private ObservableCollection<string> _memory = new ObservableCollection<string> { };
         public ObservableCollection<string> Memory
         {
             get { return _memory; }
