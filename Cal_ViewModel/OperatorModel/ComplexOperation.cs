@@ -11,27 +11,26 @@ namespace Cal_ViewModel.OperatorModel
 
         public string Sqrt(string num1)
         {
-
-
-            decimal x, y;
-            x = 0;
-            y = Convert.ToDecimal(num1) / 2;
-            while (x != y)
-            {
-                x = y;
-                y = (x + Convert.ToDecimal(num1) / x) / 2;
-            }
-            return x.ToString();
-
+            return MyMathTools.MyMath.MySqrt(num1);
         }
+
         public string Squ(string num1)
         {
-            return (Convert.ToDouble(num1) * Convert.ToDouble(num1)).ToString();
+            if (num1.Contains("."))
+            {
+               string[] strArr = num1.Split('E');
+               num1 = MyMathTools.MyMath.MyRouding((decimal.Parse(strArr[0]) * decimal.Parse(strArr[0])).ToString());
+
+            }
+
+            return MyMathTools.MyMath.MyRouding((Convert.ToDouble(num1) * Convert.ToDouble(num1)).ToString());
         }
+
         public string Cube(string num1)
         {
             return (Convert.ToDecimal(num1) * Convert.ToDecimal(num1) * Convert.ToDecimal(num1)).ToString();
         }
+
         public string OneCent(string num1)
         {
             if ("0".Equals(num1))
@@ -45,6 +44,7 @@ namespace Cal_ViewModel.OperatorModel
 
 
         }
+
         public string Minus(string num1)
         {
             return (-Convert.ToDecimal(num1)).ToString();

@@ -7,7 +7,6 @@ using Cal_ViewModel.OperatorModel;
 using Cal_ViewModel.SaveModel;
 using Cal_ViewModel.JudgeModel;
 namespace Cal_ViewModel.TypeModel
-
 {
     class AddOperator : IJudgeOperator
     {
@@ -91,6 +90,5 @@ namespace Cal_ViewModel.TypeModel
             Cache.judgeEqual = false;
             return Cache.topCache;
         }
-
     }
 }

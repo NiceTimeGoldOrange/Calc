@@ -20,24 +20,29 @@
             <RowDefinition Height="293*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
+        <!-- 右侧历史记录、内存 -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
+        
         <Grid Grid.Row="0" MouseMove="TitleMove_MouseMove" Name="TitleBar">
-        <DockPanel LastChildFill="False" VerticalAlignment="Top" >
+            <DockPanel LastChildFill="False" VerticalAlignment="Top" >
                 <Label DockPanel.Dock="Left"  VerticalAlignment="Center" Content="  计算器"  MouseMove="TitleMove_MouseMove" Width="176"/>
                 <Button  DockPanel.Dock="Right" Style="{StaticResource btnClose}" FontSize="15" Click="Close_Click" VerticalContentAlignment="Center">×</Button>
-            <Button  DockPanel.Dock="Right" Style="{StaticResource btnMinAndMax}" FontSize="13.5" FontWeight="ExtraLight" Click="Max_Click" x:Name="Max" VerticalContentAlignment="Center" >☐</Button>
+                <Button  DockPanel.Dock="Right" Style="{StaticResource btnMinAndMax}" FontSize="13.5" FontWeight="ExtraLight" Click="Max_Click" x:Name="Max" VerticalContentAlignment="Center" >☐</Button>
                 <Button  DockPanel.Dock="Right" Style="{StaticResource btnMinAndMax}" FontSize="20" Click="Min_Click" VerticalContentAlignment="Center">-</Button>
-        </DockPanel>
+            </DockPanel>
         </Grid>
+        
         <DockPanel Grid.Row="1"  Name="Two_Row">
             <Button DockPanel.Dock="Left" Style="{StaticResource btnNav}" >≡</Button>
             <Button DockPanel.Dock="Right" Style="{StaticResource btnHis}" Name="btnHis" Click="HisDisplay_Click">
-                <Image Source="Resources\Img\ImgClock.png"></Image></Button>
+                <Image Source="Resources\Img\ImgClock.png"></Image>
+            </Button>
             <Label  DockPanel.Dock="Left" Style="{StaticResource lblText}">标准</Label>
         </DockPanel>
+        
         <Border Grid.Row="2">
             <TextBox Style="{StaticResource txtSmallBox}" Text="{Binding DisPlayText}"></TextBox>
         </Border>
@@ -81,7 +86,7 @@
                 <Button Style="{StaticResource btnNum}" Command="{Binding Num0Command}">0</Button>
                 <Button Style="{StaticResource btnOther}" Command="{Binding DotCommand}" FontWeight="DemiBold">.</Button>
                 <Button Style="{StaticResource btnChar}" Command="{Binding EqualsCommand}" >=</Button>
-                
+
             </UniformGrid>
         </Grid>
     </Grid>
