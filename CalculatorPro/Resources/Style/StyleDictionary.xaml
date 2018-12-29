@@ -346,8 +346,26 @@
         <Setter Property="Width" Value="36.675"></Setter>
         <Setter Property="Height" Value="28.5"></Setter>
         <Setter Property="BorderThickness" Value="0"></Setter>
-        <Setter Property="Margin" Value="0,0,3,0"></Setter>
-        <Setter Property="Visibility" Value="Hidden"></Setter>
+        <Setter Property="Margin" Value="0,0,3,15"></Setter>
+        <Setter Property="Background" Value="White"></Setter>
+        <Setter Property="FontFamily" Value="Yu Gothic UI Semibold"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#3e3e3e"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#7b7b7b"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
     <Style x:Key="MemGrid" TargetType="Grid">
         <Setter Property="Background" Value="#e6e6e6"></Setter>
@@ -357,7 +375,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
+    <!--
     <Style x:Key="txtMem" TargetType="TextBox">
         <Setter Property="Background" Value="#e6e6e6"></Setter>
         <Style.Triggers>
@@ -366,4 +384,36 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    -->
+    <Style x:Key="ExtensionMButtonStyle" TargetType="Button">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="#F6F6F6"/>
+        <Setter Property="Width" Value="36"/>
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                        <TextBlock x:Name="tb" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#3E3E3E"/>
+                            <Setter TargetName="tb" Property="Foreground" Value="#FFFFFF" />
+                            <Setter TargetName="border" Property="BorderThickness" Value="0"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="#005AA3"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="tb" Property="Foreground" Value="#FFFFFF" />
+                            <Setter TargetName="border" Property="Background" Value="#7c7c7c"/>
+                            <Setter TargetName="border" Property="BorderThickness" Value="0"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="#88A7C0"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
 </ResourceDictionary>

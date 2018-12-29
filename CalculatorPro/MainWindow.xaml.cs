@@ -12,6 +12,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -130,8 +131,14 @@ namespace CalculatorPro
 
         }
         int i = 0;
+        DoubleAnimation doubleAnimation = new DoubleAnimation();
+        
         private void MS_Click(object sender, RoutedEventArgs e)
         {
+            ColorAnimation colorAnimation1 = new ColorAnimation();
+            ColorAnimation colorAnimation2 = new ColorAnimation();
+            SolidColorBrush myBrush1 = new SolidColorBrush();
+            SolidColorBrush myBrush2 = new SolidColorBrush();
             i += 1;
             btnMc.Opacity = 1;
             btnMc.IsEnabled = true;
@@ -139,16 +146,29 @@ namespace CalculatorPro
             btnM.IsEnabled = true;
             btnMr.Opacity = 1;
             btnMr.IsEnabled = true;
-            MemControl mc = new MemControl();
-            mc.Margin = new Thickness(-5);
-            mc.txtMem.Text = txtBox.Text;
-            if (i == 1)
-            {
-                ham.lstBoxMem.Items.RemoveAt(0);
-            }
-            ham.lstBoxMem.Items.Insert(0, mc);
-
-
+            ham.lblMem.Visibility = Visibility.Collapsed;
+            ham.lstBoxMem.Margin = new Thickness(0,0,0,0);
+            //MemControl mc = new MemControl();
+            //mc.Margin = new Thickness(-5);
+            //mc.txtMem.Text = txtBox.Text;
+            //if (i == 1)
+            //{
+            //    ham.lstBoxMem.Items.RemoveAt(0);
+            //}
+            //ham.lstBoxMem.Items.Insert(0, mc);
+            //colorAnimation1.From = Color.FromRgb(230, 230, 230);
+            //colorAnimation1.To = Color.FromRgb(230, 230, 230);
+            //colorAnimation1.BeginTime = TimeSpan.FromSeconds(0);
+            //colorAnimation1.Duration = TimeSpan.FromSeconds(5);
+            //colorAnimation2.From = Color.FromRgb(230, 230, 230);
+            //colorAnimation2.To = Colors.Black;
+            //colorAnimation1.BeginTime = TimeSpan.FromSeconds(5);
+            //colorAnimation2.Duration = TimeSpan.FromSeconds(1);
+            //myBrush1.BeginAnimation(SolidColorBrush.ColorProperty, colorAnimation1);
+            //mc.txtMem.Foreground = myBrush1;
+            //myBrush2.BeginAnimation(SolidColorBrush.ColorProperty, colorAnimation2);
+            //mc.txtMem.Foreground = myBrush2;
+            //ham.btnDel.Visibility = Visibility.Visible;
         }
         //字体效果
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

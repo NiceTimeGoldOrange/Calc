@@ -33,7 +33,7 @@ namespace Cal_ViewModel.FormatModel
             {
                 return "除数不能为零";
             }
-
+            //张桔 12.28 NTGO_Q1 问题解决方式
             if (underCache.Contains("."))
             {
                 //判断是否有小数点，只取整数部分

@@ -21,9 +21,12 @@ namespace CalculatorPro
     /// </summary>
     public partial class HisAndMemDis : UserControl
     {
+        private static int count = 0;
+        private static int itemCount = 0;
         public HisAndMemDis()
         {
             InitializeComponent();
+            lstBoxMem.ItemContainerGenerator.StatusChanged += Items_CollectionChanged;
         }
 
         DoubleAnimation lstBoxShow = new DoubleAnimation();
@@ -57,5 +60,42 @@ namespace CalculatorPro
                 ImgMem.BeginAnimation(Grid.OpacityProperty, lstBoxShow);
             }
         }
+        private void Items_CollectionChanged(object sender, EventArgs e)
+        {
+            if (itemCount != lstBoxMem.Items.Count)
+            {
+                count++;
+                if (count %2 == 0)
+                {
+                    ListBoxItem firstItem =(ListBoxItem) lstBoxMem.ItemContainerGenerator.ContainerFromIndex(0)  ;
+                    firstItem.Opacity = 0;
+                    if (count == 4)
+                    {
+                        DoubleAnimation heightAnimation = new DoubleAnimation();
+                        heightAnimation.From = 0;
+                        heightAnimation.To = firstItem.ActualHeight;
+                        heightAnimation.Duration = TimeSpan.FromSeconds(0);
+                        heightAnimation.BeginTime = TimeSpan.FromSeconds(0.3);
+                        firstItem.BeginAnimation(HeightProperty, heightAnimation);
+                        DoubleAnimation opacityAnimation = new DoubleAnimation();
+                        opacityAnimation.From = 0;
+                        opacityAnimation.To = 1;
+                        opacityAnimation.Duration = TimeSpan.FromSeconds(0.3);
+                        opacityAnimation.BeginTime = TimeSpan.FromSeconds(0.3);
+                        firstItem.BeginAnimation(OpacityProperty, opacityAnimation);
+                        ThicknessAnimation marginAnimation = new ThicknessAnimation();
+                        marginAnimation.From = new Thickness(-5, 0, 5, 0);
+                        marginAnimation.To = new Thickness(-5, 0, 0, 0);
+                        marginAnimation.Duration = TimeSpan.FromSeconds(0.3);
+                        marginAnimation.BeginTime = TimeSpan.FromSeconds(0.3);
+                        firstItem.BeginAnimation(MarginProperty, marginAnimation);
+                        itemCount = lstBoxMem.Items.Count;
+                        count = 0;
+                    }
+                }
+            }
+
+        }  
+        
     }
 }
