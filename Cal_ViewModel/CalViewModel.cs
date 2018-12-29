@@ -16,6 +16,7 @@ using Cal_ViewModel.TypeModel;
 using Cal_ViewModel.FormatModel;
 using System.Collections.ObjectModel;
 using System.Numerics;
+using MyMathTools.NumToSci;
 
 namespace Cal_ViewModel
 {

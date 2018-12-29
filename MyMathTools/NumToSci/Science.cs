@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyMathTools.NumToSci
 {
-    class Science
+    public class Science
     {
         public static string MySciToNum(string i1)
         {

@@ -1,5 +1,6 @@
 ﻿using Cal_ViewModel.OperatorModel;
 using Cal_ViewModel.SaveModel;
+using MyMathTools.NumToSci;
 
 namespace Cal_ViewModel.TypeModel.SingleOperation
 {
@@ -20,6 +21,12 @@ namespace Cal_ViewModel.TypeModel.SingleOperation
             {
                 Cache.topCache += ("sqr(" + Cache.underCache + ")");
                 Cache.underCache = CO.Squ(Cache.underCache);
+
+                if (Cache.underCache.Contains("E"))
+                {
+                    Cache.underCache = Science.Multiply(Cache.underCache, Cache.underCache);
+                }
+
                 Cache.judgeSinge = true;
             }
             //3.Cache.judgeSinge为true即已经进行过单目运算的情况下
@@ -35,7 +42,7 @@ namespace Cal_ViewModel.TypeModel.SingleOperation
                     if (Cache.topCache.LastIndexOf(Cache.operatorCacheNew).Equals(Cache.topCache.Length - 1))
                     {
                         Cache.topCache += ("sqr(" + Cache.resultCache + ")");
-                        Cache.underCache = CO.Squ(Cache.underCache);
+                        Cache.underCache = CO.Squ(Cache.underCache).Substring(0 ,16);
                     }
                     else
                     {

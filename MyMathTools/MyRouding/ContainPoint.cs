@@ -4,17 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Numerics;
+using System.Diagnostics;
 
 namespace MyMathTools.MyRouding
 {
     class ContainPoint
     {
-        public static string ContainPoint(string i1)
+        public static string ContainsPoint(string i1)
         {
             if (i1.StartsWith("-"))
             {
                 i1 = i1.Substring(1, i1.Length - 1);
                 i1 = "-" + Method(i1);
+                return i1;
+            }
+            else if (i1.Contains("E"))
+            {
                 return i1;
             }
             else
@@ -38,6 +43,7 @@ namespace MyMathTools.MyRouding
                     }
                     else
                     {
+                        Debug.WriteLine(strArr[1]);
                         string num = strArr[1].Substring(16 - strArr[0].Length, 1);
                         if (int.Parse(num) >= 5)
                         {
