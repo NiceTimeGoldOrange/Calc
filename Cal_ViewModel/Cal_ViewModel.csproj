@@ -70,8 +70,6 @@
     <Compile Include="SaveModel\IMSClear.cs" />
     <Compile Include="SaveModel\IMSUse.cs" />
     <Compile Include="SaveModel\Memory.cs" />
-    <Compile Include="Tools\MyMath.cs" />
-    <Compile Include="Tools\Rouding.cs" />
     <Compile Include="TypeModel\AddOperator.cs" />
     <Compile Include="TypeModel\AddSingle.cs" />
     <Compile Include="TypeModel\AddSymbol.cs" />
@@ -84,6 +82,8 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Tools\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

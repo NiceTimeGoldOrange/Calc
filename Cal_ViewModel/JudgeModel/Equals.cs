@@ -34,6 +34,7 @@ namespace Cal_ViewModel.JudgeModel
             {
 
                 Cache.resultCache = CalViewModel._disPlayBigText;
+                
 
                 switch (Cache.operatorCacheNew)
 

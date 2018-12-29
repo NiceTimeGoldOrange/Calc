@@ -23,7 +23,7 @@
             </Grid>
         </DockPanel>
         <Border Grid.Row="1" Name="lstHis" Visibility="Visible"  >
-            <ListBox Background="#e6e6e6" Margin="0,20" >
+            <ListBox Background="#e6e6e6" Margin="0,20"  >
                 <ListBoxItem Style="{StaticResource lstItemHisDefault}" Name="HisDefalut">尚无历史记录</ListBoxItem>
             </ListBox>
         </Border>

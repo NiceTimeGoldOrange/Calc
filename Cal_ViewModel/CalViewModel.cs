@@ -27,6 +27,8 @@ namespace Cal_ViewModel
     {   //输入框
         public static string _disPlayBigText = "0";//初始为0的底部框子
         public static string _disPlayText = "";//
+        public static string _memDefalut = "";
+        public static string _hisDefalut = "";
         string stri;
 
         AddNumber.NumberOneToNine addNum = new AddNumber.NumberOneToNine();
@@ -60,6 +62,28 @@ namespace Cal_ViewModel
             set
             {
                 SetPropertyNotify(ref _disPlayText, value, nameof(DisPlayText));
+            }
+        }
+        public string MemDefalut
+        {
+            get
+            {
+                return _memDefalut;
+            }
+            set
+            {
+                SetPropertyNotify(ref _memDefalut, value, nameof(MemDefalut));
+            }
+        }
+        public string HisDefalut
+        {
+            get
+            {
+                return _hisDefalut;
+            }
+            set
+            {
+                SetPropertyNotify(ref _hisDefalut, value, nameof(HisDefalut));
             }
         }
         //+
@@ -466,8 +490,9 @@ namespace Cal_ViewModel
         }
         private void EqualsHandler()
         {
-
+            //HisDefalut = AddFormat.Addformat(eq.getResult());
             DisPlayBigText = AddFormat.Addformat(eq.getResult());
+    
             if ("".Equals(Cache.operatorCacheNew))
 
             {
@@ -496,7 +521,9 @@ namespace Cal_ViewModel
                     }
                     else
                     {
+                        ///his.AddHistory(HisDefalut + "=" + HisDefalut);
                         his.AddHistory(DisPlayBigText + "=" + DisPlayBigText);
+                       
                         History.Clear();
                         foreach (var item in his.GetHistory())
                         {
@@ -530,7 +557,9 @@ namespace Cal_ViewModel
                                     stri = (Convert.ToDecimal(Cache.resultCache) * Convert.ToDecimal(Cache.underCache)).ToString();
                                     break;
                             }
+                            //his.AddHistory(Cache.topCache + stri + Cache.underCache + "=" + HisDefalut);
                             his.AddHistory(Cache.topCache + stri + Cache.underCache + "=" + DisPlayBigText);
+                            
                             History.Clear();
                             foreach (var item in his.GetHistory())
                             {
@@ -539,7 +568,9 @@ namespace Cal_ViewModel
                         }
                         else
                         {
+                            //his.AddHistory(Cache.topCache + "=" + HisDefalut);
                             his.AddHistory(Cache.topCache + "=" + DisPlayBigText);
+                            
                             History.Clear();
                             foreach (var item in his.GetHistory())
                             {
@@ -553,7 +584,9 @@ namespace Cal_ViewModel
                     {
                         if (Cache.judgeTurn && Cache.judgeNewInp)
                         {
+                            //his.AddHistory(DisPlayText + "=" + HisDefalut);
                             his.AddHistory(DisPlayText + "=" + DisPlayBigText);
+                           
                             History.Clear();
                             foreach (var item in his.GetHistory())
                             {
@@ -562,7 +595,9 @@ namespace Cal_ViewModel
                         }
                         else
                         {
+                            //his.AddHistory(HisDefalut + Cache.underCache + "=" + HisDefalut);
                             his.AddHistory(DisPlayText + Cache.underCache + "=" + DisPlayBigText);
+                            
                             History.Clear();
                             foreach (var item in his.GetHistory())
                             {
@@ -590,7 +625,8 @@ namespace Cal_ViewModel
                             stri = (Convert.ToDecimal(Cache.resultCache) * Convert.ToDecimal(Cache.underCache)).ToString();
                             break;
                     }
-
+                   // his.AddHistory(stri + Cache.operatorCacheNew + Cache.underCache + "=" + HisDefalut);
+               
                     his.AddHistory(stri + Cache.operatorCacheNew + Cache.underCache + "=" + DisPlayBigText);
                     History.Clear();
                     foreach (var item in his.GetHistory())
@@ -603,6 +639,7 @@ namespace Cal_ViewModel
             }
 
             DisPlayText = "";
+          //  HisDefalut = "";
             Cache.topCache = "";
             Cache.judgeEqual = true;
             Cache.judgeTurn = true;
