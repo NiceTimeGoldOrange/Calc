@@ -187,7 +187,8 @@ namespace CalculatorPro
 
         private void Equals_Click(object sender, RoutedEventArgs e)
         {
-
+            ham.lblHis.Visibility = Visibility.Collapsed;
+            ham.lstHis.Margin = new Thickness(0, 0, 0, 0);
         }
     }
 }

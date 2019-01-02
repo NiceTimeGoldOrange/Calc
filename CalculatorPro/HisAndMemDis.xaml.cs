@@ -27,7 +27,13 @@ namespace CalculatorPro
         {
             InitializeComponent();
             lstBoxMem.ItemContainerGenerator.StatusChanged += Items_CollectionChanged;
+            //lstBoxHis.ItemContainerGenerator.StatusChanged += HisItems_CollectionChanged;
         }
+
+        //private void HisItems_CollectionChanged(object sender, EventArgs e)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         DoubleAnimation lstBoxShow = new DoubleAnimation();
         private void BtnHisRec_Click(object sender, RoutedEventArgs e)
@@ -61,7 +67,7 @@ namespace CalculatorPro
             }
         }
         private void Items_CollectionChanged(object sender, EventArgs e)
-        {
+        {   
             if (itemCount != lstBoxMem.Items.Count)
             {
                 count++;

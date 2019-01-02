@@ -23,9 +23,9 @@
             </Grid>
         </DockPanel>
         <Grid  Grid.Row="1" Name="lstHis" Visibility="Visible">
-            <Label FontSize="15" FontWeight="Black" FontFamily="微软雅黑" Name="lblHis">尚无历史记录</Label>
+            <Label FontSize="15" FontWeight="Black" FontFamily="微软雅黑" Name="lblHis" >尚无历史记录</Label>
         <Border >
-            <ListBox Background="#e6e6e6" Margin="0,26,0,0" >
+                <ListBox ItemContainerStyle="{StaticResource HistoryListItemStyle}" Name="lstBoxHis" Background="#e6e6e6" Margin="0,26,0,0"  ItemsSource="{Binding History}">
             </ListBox>
         </Border>
         </Grid>

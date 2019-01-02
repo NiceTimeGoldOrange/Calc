@@ -653,7 +653,7 @@ namespace Cal_ViewModel
             get { return _memory; }
 
         }
-        private ObservableCollection<string> _history = new ObservableCollection<string> { "尚无历史记录                                         " };
+        private ObservableCollection<string> _history = new ObservableCollection<string> { };
         public ObservableCollection<string> History
         {
             get { return _history; }
