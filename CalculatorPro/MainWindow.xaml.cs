@@ -1,6 +1,7 @@
 ﻿using Cal_ViewModel;
 using CalculatorPro.View;
 using MahApps.Metro.Controls;
+using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -189,6 +190,19 @@ namespace CalculatorPro
         {
             ham.lblHis.Visibility = Visibility.Collapsed;
             ham.lstHis.Margin = new Thickness(0, 0, 0, 0);
+        }
+
+        private void BtnMc_Click(object sender, RoutedEventArgs e)
+        {
+            ham.lblMem.Visibility = Visibility.Visible;
+            ham.lstBoxMem.Margin = new Thickness(0, 30, 0, 0);
+            btnMc.Opacity = 0.2;
+            btnMc.IsEnabled = false;
+            btnM.Opacity = 0.2;
+            btnM.IsEnabled = false;
+            btnMr.Opacity = 0.2;
+            btnMr.IsEnabled = false;
+
         }
     }
 }
