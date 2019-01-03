@@ -83,6 +83,7 @@
     <Compile Include="MemFlyout.xaml.cs">
       <DependentUpon>MemFlyout.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RevealBorderBrushExtension.cs" />
     <Compile Include="TestDemo\Test.xaml.cs">
       <DependentUpon>Test.xaml</DependentUpon>
     </Compile>

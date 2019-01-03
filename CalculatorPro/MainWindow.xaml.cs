@@ -141,11 +141,11 @@ namespace CalculatorPro
             SolidColorBrush myBrush1 = new SolidColorBrush();
             SolidColorBrush myBrush2 = new SolidColorBrush();
             i += 1;
-            btnMc.Opacity = 1;
+            btnMc.Foreground = new SolidColorBrush(Color.FromRgb(0,0,0));
             btnMc.IsEnabled = true;
-            btnM.Opacity = 1;
+            btnM.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
             btnM.IsEnabled = true;
-            btnMr.Opacity = 1;
+            btnMr.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
             btnMr.IsEnabled = true;
             ham.lblMem.Visibility = Visibility.Collapsed;
             ham.lstBoxMem.Margin = new Thickness(0,0,0,0);
@@ -196,11 +196,11 @@ namespace CalculatorPro
         {
             ham.lblMem.Visibility = Visibility.Visible;
             ham.lstBoxMem.Margin = new Thickness(0, 30, 0, 0);
-            btnMc.Opacity = 0.2;
+            btnMc.Foreground = new SolidColorBrush(Color.FromRgb(182, 182, 182));
             btnMc.IsEnabled = false;
-            btnM.Opacity = 0.2;
+            btnM.Foreground = new SolidColorBrush(Color.FromRgb(182, 182, 182));
             btnM.IsEnabled = false;
-            btnMr.Opacity = 0.2;
+            btnMr.Foreground = new SolidColorBrush(Color.FromRgb(182, 182, 182));
             btnMr.IsEnabled = false;
 
         }

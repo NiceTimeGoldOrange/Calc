@@ -7,11 +7,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"      
         xmlns:local="clr-namespace:CalculatorPro"
+        xmlns:demo="clr-namespace:CalculatorPro"
         mc:Ignorable="d"
         x:Name="Window"
         Icon="Resources\Img\Calculator.ico"
-
+        Background="#99e6e6e6"
+        AllowsTransparency="True"
         Height="501" Width="321.5" MinHeight="501" MinWidth="321.5" WindowStyle="None" ShowTitleBar="False" ShowMaxRestoreButton="False" ShowCloseButton="False" ShowMinButton="False" BorderBrush="Black">
+     
         <metro:MetroWindow.InputBindings>
             <KeyBinding Key="D0" Command="{Binding Num0Command}"></KeyBinding>
             <KeyBinding Key="D1" Command="{Binding Num1Command}"></KeyBinding>
@@ -39,7 +42,7 @@
             <KeyBinding Key="Divide" Command="{Binding DivideCommand}"></KeyBinding>
             <KeyBinding Modifiers="Shift" Key="D2" Command="{Binding RadicalCommand}"></KeyBinding>
     </metro:MetroWindow.InputBindings>
-    <Grid  Background="#e6e6e6" Name="AllGrid" >
+    <Grid  Background="#bfe6e6e6" Name="AllGrid" >
         <Grid.RowDefinitions>
             <RowDefinition Height="36.675"/>
             <RowDefinition Height="42*"/>
@@ -53,16 +56,28 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
+        <!--<Rectangle  Opacity="0.6" Grid.ColumnSpan="2" Margin="-1,-1,-0.4,-0.2" Grid.RowSpan="7">
+            <Rectangle.Effect>
+                <BlurEffect Radius="20"></BlurEffect>
+            </Rectangle.Effect>
+            <Rectangle.Fill>
+                <VisualBrush ViewboxUnits="Absolute" >
+                    <VisualBrush.Transform>
+                        <TranslateTransform X="0" />
+                    </VisualBrush.Transform>
+                </VisualBrush>
+            </Rectangle.Fill>
+        </Rectangle>-->
         
-        <Grid Grid.Row="0" MouseMove="TitleMove_MouseMove" Name="TitleBar">
-            <DockPanel LastChildFill="False" VerticalAlignment="Top" >
-                <Label DockPanel.Dock="Left"  VerticalAlignment="Center" Content="  计算器"  MouseMove="TitleMove_MouseMove" Width="176"/>
+        <Grid Grid.Row="0" MouseMove="TitleMove_MouseMove" Name="TitleBar" Background="#bfe6e6e6">
+            <DockPanel LastChildFill="False" VerticalAlignment="Top" Background="#bfe6e6e6" >
+                <Label DockPanel.Dock="Left"  VerticalAlignment="Center" Content="  计算器"  MouseMove="TitleMove_MouseMove" Width="176" Background="#bfe6e6e6"/>
                 <Button  DockPanel.Dock="Right" Style="{StaticResource btnClose}" FontSize="15" Click="Close_Click" VerticalContentAlignment="Center">×</Button>
                 <Button  DockPanel.Dock="Right" Style="{StaticResource btnMinAndMax}" FontSize="13.5" FontWeight="ExtraLight" Click="Max_Click" x:Name="Max" VerticalContentAlignment="Center" >☐</Button>
                 <Button  DockPanel.Dock="Right" Style="{StaticResource btnMinAndMax}" FontSize="20" Click="Min_Click" VerticalContentAlignment="Center">-</Button>
             </DockPanel>
         </Grid>
-        <DockPanel Grid.Row="1"  Name="Two_Row">
+        <DockPanel Grid.Row="1"  Name="Two_Row" Background="#bfe6e6e6" >
             <Button DockPanel.Dock="Left" Style="{StaticResource btnNav}" >≡</Button>
             <Button DockPanel.Dock="Right" Style="{StaticResource btnHis}" Name="btnHis" Click="HisDisplay_Click">
                 <Image Source="Resources\Img\ImgClock.png"></Image>
@@ -70,24 +85,24 @@
             <Label  DockPanel.Dock="Left" Style="{StaticResource lblText}">标准</Label>
         </DockPanel>
         <Border Grid.Row="2">
-            <TextBox Style="{StaticResource txtSmallBox}" Text="{Binding DisPlayText}"></TextBox>
+            <TextBox Style="{StaticResource txtSmallBox}" Text="{Binding DisPlayText}" ></TextBox>
         </Border>
         <Border Grid.Row="3">
             <TextBox  Style="{StaticResource txtBigBox}" Text="{Binding DisPlayBigText}" TextChanged="TextBox_TextChanged" Name="txtBox" Margin="5,0,5,0"></TextBox>
         </Border>
         <Grid Grid.Row="4" x:Name="GridMem" >
             <UniformGrid Rows="1" Columns="6" Name="uniformMem">
-                <Button  Style="{StaticResource btnMem}" Name="btnMc" IsEnabled="False" Opacity="0.2" Command="{Binding Btn_mc}" Click="BtnMc_Click">MC</Button>
-                <Button  Style="{StaticResource btnMem}" Name="btnMr"  IsEnabled="False" Opacity="0.2"  Command="{Binding Btn_mr}">MR</Button>
+                <Button  Style="{StaticResource btnMem}" Name="btnMc" IsEnabled="False" Foreground="#b7b7b7" Command="{Binding Btn_mc}" Click="BtnMc_Click">MC</Button>
+                <Button  Style="{StaticResource btnMem}" Name="btnMr"  IsEnabled="False"  Foreground="#b7b7b7" Command="{Binding Btn_mr}">MR</Button>
                 <Button  Style="{StaticResource btnMem}" Command="{Binding Btn_plus}">M+</Button>
                 <Button  Style="{StaticResource btnMem}" Command="{Binding Btn_minus}" >M-</Button>
                 <Button  Style="{StaticResource btnMem}" Command="{Binding Btn_ms}" Click="MS_Click">MS</Button>
-                <Button  Style="{StaticResource btnMem}" Name="btnM" Click="MemDisplay_Click" IsEnabled="False" Opacity="0.2">M▾</Button>
+                <Button  Style="{StaticResource btnMem}" Name="btnM" Click="MemDisplay_Click" IsEnabled="False" Foreground="#b7b7b7">M▾</Button>
             </UniformGrid>
         </Grid>
         <Grid Grid.Row="5"  x:Name="OutGrid">
             <UniformGrid Rows="6" Columns="4" Name="uniformNum" Margin="3,0,3,0">
-                <Button Style="{StaticResource btnOther}" Command="{Binding PercentOneCommand}" >%</Button>
+                <Button Style="{StaticResource btnOther}" Command="{Binding PercentOneCommand}"  >%</Button>
                 <Button Style="{StaticResource btnOther}" Command="{Binding RadicalCommand}" FontFamily="Segoe UI Symbol" >√</Button>
                 <Button Style="{StaticResource btnOther}" Command="{Binding SquareCommand}">x²</Button>
                 <Button Style="{StaticResource btnOther}" Command="{Binding ReciprocalCommand}">⅟x</Button>
@@ -111,8 +126,8 @@
                 <Button Style="{StaticResource btnNum}" Command="{Binding Num0Command}">0</Button>
                 <Button Style="{StaticResource btnOther}" Command="{Binding DotCommand}" FontWeight="DemiBold">.</Button>
                 <Button Style="{StaticResource btnChar}" Command="{Binding EqualsCommand}" Click="Equals_Click">=</Button>
+                
             </UniformGrid>
-           
         </Grid>
         
     </Grid>
