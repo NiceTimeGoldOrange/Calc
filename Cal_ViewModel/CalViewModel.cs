@@ -6,24 +6,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Microsoft.Web.Infrastructure;
 using System.Runtime.CompilerServices;
-using Infrastructure;
 using Cal_ViewModel.SaveModel;
 using Cal_ViewModel.AddNumber;
 using Cal_ViewModel.JudgeModel;
 using Cal_ViewModel.TypeModel;
 using Cal_ViewModel.FormatModel;
 using System.Collections.ObjectModel;
-
-
-
+using Infrastructure;
+using MyMathTools.ScienceNum;
+using System.Diagnostics;
 
 namespace Cal_ViewModel
 {
     public class CalViewModel : NotifyObject
-
-
     {   //输入框
         public static string _disPlayBigText = "0";//初始为0的底部框子
         public static string _disPlayText = "";//
@@ -62,13 +58,13 @@ namespace Cal_ViewModel
                 SetPropertyNotify(ref _disPlayText, value, nameof(DisPlayText));
             }
         }
-        //+
+
         private readonly NVCommand _addCommand;
         public NVCommand AddCommand                          //加
         {
             get => _addCommand;
         }
-        //
+
         private readonly NVCommand _subtractCommand;
         public NVCommand SubtractCommand                    //减
         {
@@ -86,6 +82,7 @@ namespace Cal_ViewModel
         {
             get => _divideCommand;
         }
+
         //创建添加数字addNum的委托
         private readonly NVCommand _num1Command;
         public NVCommand Num1Command
@@ -241,6 +238,7 @@ namespace Cal_ViewModel
         {
             get => btn_clearHistory;
         }
+
         public CalViewModel()
         {
             _addCommand = new NVCommand(AddHandler);
@@ -275,13 +273,11 @@ namespace Cal_ViewModel
             btn_minus = new NVCommand(MMinus);
             btn_plus = new NVCommand(MPlus);
             btn_clearHistory = new NVCommand(ClearHistory);
-
-
         }
 
         private void AddHandler()
         {
-            DisPlayText= addOperator.JudgeOperator("＋");
+            DisPlayText = addOperator.JudgeOperator("＋");
             DisPlayBigText = AddFormat.Addformat(AddCommon.Addcommon(Cache.underCache));
         }
 
@@ -308,7 +304,6 @@ namespace Cal_ViewModel
         {
             DisPlayBigText = AddCommon.Addcommon(addNum.Judgefornumber("1"));
             DisPlayText = Cache.topCache;
-
         }
         private void Num2Handler()
         {
@@ -318,15 +313,13 @@ namespace Cal_ViewModel
         private void Num3Handler()
         {
 
-            DisPlayBigText= AddCommon.Addcommon(addNum.Judgefornumber("3"));
+            DisPlayBigText = AddCommon.Addcommon(addNum.Judgefornumber("3"));
             DisPlayText = Cache.topCache;
-
         }
         private void Num4Handler()
         {
             DisPlayBigText = AddCommon.Addcommon(addNum.Judgefornumber("4"));
-            DisPlayText= Cache.topCache;
-
+            DisPlayText = Cache.topCache;
         }
         private void Num5Handler()
         {
@@ -337,13 +330,11 @@ namespace Cal_ViewModel
         {
             DisPlayBigText = AddCommon.Addcommon(addNum.Judgefornumber("6"));
             DisPlayText = Cache.topCache;
-
         }
         private void Num7Handler()
         {
             DisPlayBigText = AddCommon.Addcommon(addNum.Judgefornumber("7"));
             DisPlayText = Cache.topCache;
-
         }
         private void Num8Handler()
         {
@@ -364,7 +355,6 @@ namespace Cal_ViewModel
             }
             DisPlayBigText = AddCommon.Addcommon(addNum.Judgefornumber("9"));
             DisPlayText = Cache.topCache;
-
         }
         private void Num0Handler()
         {
@@ -381,7 +371,7 @@ namespace Cal_ViewModel
             DisPlayText = addSingle.JudgeForSinge("x²");
             DisPlayBigText = AddCommon.Addcommon(Cache.underCache);
         }
-        private void CubeHandler()//平方
+        private void CubeHandler()//立方
         {
             DisPlayText = addSingle.JudgeForSinge("x³");
             DisPlayBigText = AddCommon.Addcommon(Cache.underCache);
@@ -403,7 +393,6 @@ namespace Cal_ViewModel
             {
                 DisPlayBigText = AddCommon.Addcommon(Cache.underCache);
             }
-
         }
         private void RadicalHandler()//根号
         {
@@ -425,26 +414,23 @@ namespace Cal_ViewModel
             Cache.judgeSinge = false;
             Cache.judgeMinus = true;
             Cache.count = 0;
-
         }
+
         private void ClearPreHandler()
         {
-
             if (Cache.judgeSinge)
             {
                 his.AddHistory(DisPlayText + "=" + DisPlayBigText);
                 History.Clear();
                 foreach (var item in his.GetHistory())
-
                 {
                     History.Insert(0, item);
-
                 }
-
             }
             DisPlayBigText = "0";
             Cache.underCache = "";
         }
+
         private void DelHandler()
         {
             if (Cache.underCache.Length > 1)
@@ -458,12 +444,13 @@ namespace Cal_ViewModel
                 DisPlayBigText = Cache.underCache;
                 Cache.underCache = "";
             }
-
         }
+
         private void DotHandler()
         {
             DisPlayBigText = addDot.Judgefordot();
         }
+
         private void EqualsHandler()
         {
 
@@ -482,7 +469,6 @@ namespace Cal_ViewModel
                 }
                 else
                 {
-
                     if (Cache.judgeSinge)
                     {
                         his.AddHistory(Cache.topCache + "=" + Cache.underCache);
@@ -492,7 +478,6 @@ namespace Cal_ViewModel
                             History.Insert(0, item);
                         }
                         Cache.judgeSinge = false;
-
                     }
                     else
                     {
@@ -503,8 +488,6 @@ namespace Cal_ViewModel
                             History.Insert(0, item);
                         }
                     }
-
-
                 }
             }
             else
@@ -518,16 +501,48 @@ namespace Cal_ViewModel
                             switch (Cache.operatorCacheNew)
                             {
                                 case "＋":
-                                    stri = (Convert.ToDecimal(Cache.resultCache) - Convert.ToDecimal(Cache.underCache)).ToString();
+                                    if (Cache.resultCache.Contains("E") || Cache.resultCache.Contains("e"))
+                                    {
+                                        stri = Science.Addition(Cache.resultCache, Cache.underCache);
+                                    }
+                                    else
+                                    {
+                                        stri = (Convert.ToDecimal(Cache.resultCache) - Convert.ToDecimal(Cache.underCache)).ToString();
+                                    }
                                     break;
                                 case "－":
-                                    stri = (Convert.ToDecimal(Cache.resultCache) + Convert.ToDecimal(Cache.underCache)).ToString();
+                                    if (Cache.resultCache.Contains("E") || Cache.resultCache.Contains("e"))
+                                    {
+                                        stri = Science.Subtract(Cache.resultCache, Cache.underCache);
+                                    }
+                                    else
+                                    {
+                                        stri = (Convert.ToDecimal(Cache.resultCache) + Convert.ToDecimal(Cache.underCache)).ToString();
+                                    }
                                     break;
                                 case "×":
-                                    stri = (Convert.ToDecimal(Cache.resultCache) / Convert.ToDecimal(Cache.underCache)).ToString();
+                                    if (Cache.resultCache.Contains("E") || Cache.resultCache.Contains("e"))
+                                    {
+                                        stri = Science.Multiply(Cache.resultCache, Cache.underCache);
+                                    }
+                                    else
+                                    {
+                                        stri = (Convert.ToDecimal(Cache.resultCache) / Convert.ToDecimal(Cache.underCache)).ToString();
+                                    }
                                     break;
                                 case "÷":
-                                    stri = (Convert.ToDecimal(Cache.resultCache) * Convert.ToDecimal(Cache.underCache)).ToString();
+                                    if (Cache.resultCache.Contains("E") || Cache.resultCache.Contains("e"))
+                                    {
+                                        stri = Science.Devide(Cache.resultCache, Cache.underCache);
+                                    }
+                                    else if (Cache.resultCache.Contains("除数"))
+                                    {
+                                        stri = Cache.resultCache;
+                                    }
+                                    else
+                                    {
+                                        stri = (Convert.ToDecimal(Cache.resultCache) * Convert.ToDecimal(Cache.underCache)).ToString();
+                                    }
                                     break;
                             }
                             his.AddHistory(Cache.topCache + stri + Cache.underCache + "=" + DisPlayBigText);
@@ -569,28 +584,72 @@ namespace Cal_ViewModel
                                 History.Insert(0, item);
                             }
                         }
-
                     }
                 }
                 else
                 {
-
                     switch (Cache.operatorCacheNew)
                     {
                         case "＋":
-                            stri = (Convert.ToDecimal(Cache.resultCache) - Convert.ToDecimal(Cache.underCache)).ToString();
+                            if (Cache.resultCache.Contains("E") || Cache.resultCache.Contains("e"))
+                            {
+                                stri = Science.Addition(Cache.resultCache, Cache.underCache);
+                            }
+                            else
+                            {
+                                stri = (Convert.ToDecimal(Cache.resultCache) - Convert.ToDecimal(Cache.underCache)).ToString();
+                            }
                             break;
                         case "－":
-                            stri = (Convert.ToDecimal(Cache.resultCache) + Convert.ToDecimal(Cache.underCache)).ToString();
+                            if (Cache.resultCache.Contains("E") || Cache.resultCache.Contains("e"))
+                            {
+                                stri = Science.Subtract(Cache.resultCache, Cache.underCache);
+                            }
+                            else
+                            {
+                                stri = (Convert.ToDecimal(Cache.resultCache) + Convert.ToDecimal(Cache.underCache)).ToString();
+                            }
                             break;
                         case "×":
-                            stri = (Convert.ToDecimal(Cache.resultCache) / Convert.ToDecimal(Cache.underCache)).ToString();
+                            //if (Cache.resultCache.Contains("E") || Cache.resultCache.Contains("e"))
+                            //{
+                                stri = Science.Multiply(Cache.resultCache, Cache.underCache);
+                            //}
+                            //else if(Cache.resultCache.Length > 16)
+                            //{
+                            //    string[] strArr = Cache.resultCache.Split(',');
+                            //    string newNum = "";
+                            //    for (int i = 0; i < strArr.Length; i++)
+                            //    {
+                            //        newNum = strArr[i];
+                            //    }
+                            //    stri = Science.MySciToNum(decimal.Parse(newNum).ToString());
+                            //}
+                            //else
+                            //{
+                            //    stri = (Convert.ToDecimal(Cache.resultCache) * Convert.ToDecimal(Cache.underCache)).ToString();
+                            //    if(stri.Length > 16)
+                            //    {
+                            //       stri = Science.MySciToNum(stri);
+                            //    }
+                            //    Debug.WriteLine(Cache.resultCache);
+                            //}
                             break;
                         case "÷":
-                            stri = (Convert.ToDecimal(Cache.resultCache) * Convert.ToDecimal(Cache.underCache)).ToString();
+                            if (Cache.resultCache.Contains("E") || Cache.resultCache.Contains("e"))
+                            {
+                                stri = Science.Devide(Cache.resultCache, Cache.underCache);
+                            }
+                            else if (Cache.resultCache.Contains("除数"))
+                            {
+                                stri = Cache.resultCache;
+                            }
+                            else
+                            {
+                                stri = (Convert.ToDecimal(Cache.resultCache) * Convert.ToDecimal(Cache.underCache)).ToString();
+                            }
                             break;
                     }
-
                     his.AddHistory(stri + Cache.operatorCacheNew + Cache.underCache + "=" + DisPlayBigText);
                     History.Clear();
                     foreach (var item in his.GetHistory())
@@ -598,17 +657,13 @@ namespace Cal_ViewModel
                         History.Insert(0, item);
                     }
                 }
-
-
             }
-
             DisPlayText = "";
             Cache.topCache = "";
             Cache.judgeEqual = true;
             Cache.judgeTurn = true;
             Cache.judgeNewInp = true;
             Cache.count = 0;
-
         }
         private ObservableCollection<string> _memory = new ObservableCollection<string> { };
         public ObservableCollection<string> Memory
@@ -620,18 +675,14 @@ namespace Cal_ViewModel
         public ObservableCollection<string> History
         {
             get { return _history; }
-
         }
         private void MS()
         {
-            //his.AddStorage();
             mem.MSChange(DisPlayBigText);
             Memory.Clear();
             foreach (var item in mem.GetMemory())
-
             {
                 Memory.Insert(0, item);
-
             }
         }
         private void MC()
@@ -639,11 +690,8 @@ namespace Cal_ViewModel
             mem.MSClear();
             Memory.Clear();
             foreach (var item in mem.GetMemory())
-
             {
-
                 Memory.Insert(0, item);
-
             }
         }
         private void MR()
@@ -655,22 +703,17 @@ namespace Cal_ViewModel
             mem.MSMinus(DisPlayBigText);
             Memory.Clear();
             foreach (var item in mem.GetMemory())
-
             {
                 Memory.Insert(0, item);
-
             }
-
         }
         private void MPlus()
         {
             mem.MSPlus(DisPlayBigText);
             Memory.Clear();
             foreach (var item in mem.GetMemory())
-
             {
                 Memory.Insert(0, item);
-
             }
         }
         private void ClearHistory()
@@ -678,14 +721,10 @@ namespace Cal_ViewModel
             his.clear();
             History.Clear();
             foreach (var item in his.GetHistory())
-
             {
-
                 History.Insert(0, item);
-
             }
         }
-
     }
 }
 

@@ -9,65 +9,47 @@ namespace Cal_ViewModel.FormatModel
 {
     static class AddCommon
     {
-        //public static string Addcommon(string underCache)
-        //{   //带小数的正则表达式判断
-        //    if (underCache.Contains(".") == true)
-        //    {
-        //        underCache = Regex.Replace(underCache, @"\d+?(?=(?:\d{3})+\.)", "$0,");
-        //    }
-        //    else
-        //    {
-        //        underCache = underCache + ".01";
-        //        underCache = Regex.Replace(underCache, @"\d+?(?=(?:\d{3})+\.)", "$0,");
-        //        string[] sArray = underCache.Split('.');
-        //        underCache = sArray.ElementAt(0);
-        //    }
-
-        //    return underCache;
-        //}
         //为整数部分添加逗号
         public static string Addcommon(string underCache)
         {
-            string integer;
-            if (underCache.Contains("-") && underCache.Contains(".") && underCache.Length >= 19)
+            // NTGO  梁家其 科学计数法、小数不需要添加逗号
+            if (underCache.Contains('E'))
             {
-                underCache = underCache.Substring(0, 19);
+                string[] str = underCache.Split('E');
+                string newNum = underCache.Substring(0, underCache.IndexOf('E'));
+                underCache = MyMathTools.MyMath.MyRouding(str[0]) + "E" + str[1];
             }
-            else if (!underCache.Contains("-") && underCache.Contains(".") && underCache.Length >= 16)
+            else if (underCache.Contains("."))
             {
-                underCache = underCache.Substring(0, 16);
-            }
-            else if (underCache.Contains("-") && !underCache.Contains(".") && underCache.Length >= 17)
-            {
-                underCache = underCache.Substring(0, 17);
-            }
-            else if (!underCache.Contains("-") && !underCache.Contains(".") && underCache.Length >= 16)
-            {
-                underCache = underCache.Substring(0, 16);
-            }
-            else if (underCache.Contains("除数不能为零"))
-            {
-                return "除数不能为零";
-            }
-            //张桔 12.28 NTGO_Q1 问题解决方式
-            if (underCache.Contains("."))
-            {
-                //判断是否有小数点，只取整数部分
-                integer = underCache.Substring(0, underCache.IndexOf("."));
-                CommaIndex(ref integer);
-                return integer + underCache.Substring(underCache.IndexOf("."));
+                underCache = MyMathTools.MyMath.MyRouding(underCache);
             }
             else
             {
-                integer = underCache;
-                CommaIndex(ref integer);
-                return integer;
+                // NTGO 张桔 为整数添加逗号
+                underCache = underCache + ".01";
+                underCache = Regex.Replace(underCache, @"\d+?(?=(?:\d{3})+\.)", "$0,");
+                string[] sArray = underCache.Split('.');
+                underCache = sArray.ElementAt(0);
+                if(underCache.Length > 21)
+                {
+                    // 9,999,999,999,999,999
+                    underCache = underCache.Substring(0, 21);
+                    string[] strArr = underCache.Split(',');
+                    string str = "";
+                    for (int i = 0; i < strArr.Length; i++)
+                    {
+                        str += strArr[i];
+                    }
+                    str = str + ".01";
+                    str = Regex.Replace(underCache, @"\d+?(?=(?:\d{3})+\.)", "$0,");
+                    string[] s1Array = underCache.Split('.');
+                    underCache = s1Array.ElementAt(0);
+                }
             }
-
-
-
+            return underCache;
         }
-        // AddComma方法的子部分，负责计算
+
+        // AddCommon方法的子部分，负责计算
         private static void CommaIndex(ref string integer)
         {
             //整数部分3个以下不需要加逗号
@@ -125,6 +107,6 @@ namespace Cal_ViewModel.FormatModel
         }
     }
 }
-   
+
 
 

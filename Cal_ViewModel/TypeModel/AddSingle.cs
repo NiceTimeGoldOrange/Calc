@@ -14,8 +14,6 @@ namespace Cal_ViewModel.TypeModel
     public class AddSingle : IJudgeForSingle
     {
         Complex_Operation CO = new Complex_Operation();
-
-        Equals eq = new Equals();
         AddSymbol sy = new AddSymbol();
 
         //添加单目符号，并进行运算
@@ -28,7 +26,6 @@ namespace Cal_ViewModel.TypeModel
             if (Cache.judgeEqual)//按过＝运算，赋值结果给underCache
             {
                 Cache.underCache = CalViewModel._disPlayBigText;
-                //Cache.resultCache = "";
                 Cache.judgeTurn = true;
                 Cache.judgeSinge = false;
                 Cache.judgeMinus = true;
@@ -49,7 +46,7 @@ namespace Cal_ViewModel.TypeModel
                     else if (!Cache.judgeSinge)
                     {
                         Cache.topCache += ("√(" + Cache.underCache + ")");
-                        Cache.underCache = CO.Sqrt(Cache.underCache);
+                        Cache.underCache = MyMathTools.MyMath.MyRouding(CO.Sqrt(Cache.underCache));
                         Cache.judgeSinge = true;
                     }
                     //3.Cache.judgeSinge为true即已经进行过单目运算的情况下
@@ -58,21 +55,21 @@ namespace Cal_ViewModel.TypeModel
                         if ("".Equals(Cache.operatorCacheOld))
                         {
                             Cache.topCache = ("√(" + Cache.topCache + ")");
-                            Cache.underCache = CO.Sqrt(Cache.underCache);
+                            Cache.underCache = MyMathTools.MyMath.MyRouding(CO.Sqrt(Cache.underCache));
                         }
                         else
                         {
                             if (Cache.topCache.LastIndexOf(Cache.operatorCacheNew).Equals(Cache.topCache.Length - 1))
                             {
                                 Cache.topCache += ("√(" + Cache.resultCache + ")");
-                                Cache.underCache = CO.Sqrt(Cache.underCache);
+                                Cache.underCache = MyMathTools.MyMath.MyRouding(CO.Sqrt(Cache.underCache));
                             }
                             else
                             {
                                 int index = Cache.topCache.LastIndexOf(Cache.operatorCacheNew) + 1;
                                 string str = Cache.topCache.Substring(index, Cache.topCache.Length - index);
                                 Cache.topCache = Cache.topCache.Substring(0, index) + ("√(" + str + ")");
-                                Cache.underCache = CO.Sqrt(Cache.underCache);
+                                Cache.underCache = MyMathTools.MyMath.MyRouding(CO.Sqrt(Cache.underCache));
                             }
                         }
                     }
@@ -116,9 +113,7 @@ namespace Cal_ViewModel.TypeModel
                                 Cache.topCache = Cache.topCache.Substring(0, index) + ("sqr(" + str + ")");
                                 Cache.underCache = CO.Squ(Cache.underCache);
                             }
-
                         }
-
                     }
                     break;
                 #endregion
@@ -161,9 +156,7 @@ namespace Cal_ViewModel.TypeModel
                                 Cache.topCache = Cache.topCache.Substring(0, index) + ("1/(" + str + ")");
                                 Cache.underCache = CO.OneCent(Cache.underCache);
                             }
-
                         }
-
                     }
                     break;
                 #endregion
@@ -190,7 +183,6 @@ namespace Cal_ViewModel.TypeModel
                             }
                             Cache.topCache = Cache.topCache.Substring(0, index) + ("negate(" + str + ")");
                             Cache.underCache = CO.Minus(Cache.underCache);
-
                         }
                     }
                     else
@@ -284,7 +276,6 @@ namespace Cal_ViewModel.TypeModel
                                 }
                             }
                         }
-
                     }
                     //如果没有过等号运算
                     else
@@ -310,7 +301,6 @@ namespace Cal_ViewModel.TypeModel
                             }
                         }
                     }
-
                     break;
                 #endregion
                 case "x³":
@@ -350,15 +340,11 @@ namespace Cal_ViewModel.TypeModel
                                 Cache.topCache = Cache.topCache.Substring(0, index) + ("cube(" + str + ")");
                                 Cache.underCache = CO.Cube(Cache.underCache);
                             }
-
                         }
-
                     }
                     break;
                     #endregion
             }
-            //Cache.underCache = AddFormat.Addformat(Cache.underCache);
-            //Cache.resultCache = AddFormat.Addformat(Cache.resultCache);
             if (Cache.judgeEqual)
             {
                 Cache.judgeEqual = false;
@@ -368,8 +354,6 @@ namespace Cal_ViewModel.TypeModel
             }
             Cache.judgeNewInp = true;
             return Cache.topCache;
-
         }
     }
 }
-

@@ -132,7 +132,7 @@ namespace CalculatorPro
         }
         int i = 0;
         DoubleAnimation doubleAnimation = new DoubleAnimation();
-        
+
         private void MS_Click(object sender, RoutedEventArgs e)
         {
             ColorAnimation colorAnimation1 = new ColorAnimation();
@@ -147,7 +147,7 @@ namespace CalculatorPro
             btnMr.Opacity = 1;
             btnMr.IsEnabled = true;
             ham.lblMem.Visibility = Visibility.Collapsed;
-            ham.lstBoxMem.Margin = new Thickness(0,0,0,0);
+            ham.lstBoxMem.Margin = new Thickness(0, 0, 0, 0);
             //MemControl mc = new MemControl();
             //mc.Margin = new Thickness(-5);
             //mc.txtMem.Text = txtBox.Text;
@@ -174,20 +174,22 @@ namespace CalculatorPro
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             string str = txtBox.GetLineText(0);
-            if (str.Length > 13 && str.Length < 21)
+            if (str.Length > 13 && str.Length < 23)
             {
-                txtBox.FontSize -= 3;
+                txtBox.FontSize -= 1;
+                if (txtBox.FontSize < 29)
+                {
+                    txtBox.FontSize = 29;
+                }
             }
-            else if (str.Length <= 13)
+            else
             {
-                txtBox.FontSize = 45;
+                txtBox.FontSize = 34;
             }
-
         }
 
         private void Equals_Click(object sender, RoutedEventArgs e)
         {
-
         }
     }
 }
